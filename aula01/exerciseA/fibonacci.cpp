@@ -1,4 +1,4 @@
-#include "fibonacci.h"
+#include "fibonacci.hh"
 
 int
 CalcularSerieFibonacci(int input){

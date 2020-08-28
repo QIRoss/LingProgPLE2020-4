@@ -1,5 +1,5 @@
 #include <iostream>
-#include "fibonacci.h"
+#include "fibonacci.hh"
 using namespace std;
 
 int main (int argc, char *argv[]){
