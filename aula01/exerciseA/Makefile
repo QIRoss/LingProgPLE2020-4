@@ -1,8 +1,8 @@
 CC = g++
 LD = g++
 
-CFLAGS = -Wall -std=c11
-LFLAGS = -Wall -std=c11
+CFLAGS = -Wall -std=c++11
+LFLAGS = -Wall -std=c++11
 
 EXERCISEOBJS = fibonacci.o main.o
 

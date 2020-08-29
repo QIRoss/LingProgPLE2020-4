@@ -1,8 +1,8 @@
 CC = g++
 LD = g++
 
-CFLAGS = -Wall -std=c11
-LFLAGS = -Wall -std=c11
+CFLAGS = -Wall -std=gnu++17
+LFLAGS = -Wall -std=gnu++17
 
 EXERCISEOBJS = agenda.o main.o
 
