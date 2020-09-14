@@ -15,13 +15,11 @@ estados individualmente, usando a estratégia de média móvel dos últimos N di
 (assumir que o programa tem acesso a dados referentes ao número de óbitos
 diários por estado por um intervalo maior que N). A porcentagem é calculada em
 comparação ao valor da média móvel obtido no dia anterior;
-TL:DR Fazer Média de todos os Estados e assim fazer a média do Brasil. Depois Calcular porcentagem (Media n)/(Media n+1)
 
 2. Exibição de forma agrupada dos estados em alta, estabilidade e baixa segundo a
 porcentagem calculada no item 1 (arbitrar limiares de definição, por exemplo,
 estados acima de 15% são considerados em alta, abaixo de -15% em baixa e,
 caso contrário, estabilidade);
-TL:DR Exibir Estados 15% acima e abaixo da média.
 
 3. Repetir a mesmo dado do item 2, se em alta, baixa ou estabilidade, para o Brasil;
 

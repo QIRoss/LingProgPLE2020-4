@@ -13,4 +13,4 @@ main: $(MAINOBJS)
 	$(LD) $(LFLAGS) -o $@ $(MAINOBJS)
 
 clean:
-	rm -f *.o main
+	rm -f *.o main a.out
