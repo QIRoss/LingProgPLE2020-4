@@ -13,6 +13,7 @@ int
     csvFile.open("covid.csv");
     unsigned long deaths = 0;
     unsigned totalDays = 0;
+    unsigned firstDeath = 0;
     
     while (csvFile.good()) {
         getline(csvFile, line[0], ',');
@@ -20,8 +21,11 @@ int
         getline(csvFile, line[2], '\n');
         if((line[0] > initialData) && (line[0] < finalData)){                                    
             if(line[1] == uf){
-                totalDays++;
+                if(firstDeath > 0){
+                    totalDays++;
+                }
                 if(line[2] != ""){
+                    firstDeath++;
                     deaths += stoul(line[2], nullptr,10);
                     // cout << line[0] << endl;
                     // cout << line[1] << endl;
@@ -36,7 +40,7 @@ int
     return r;
 }
 
-string
+int
 deathRate(string initialDate, string finalDate, string initialDateLinha, string finalDateLinha, string uf){
     float deathRate = 0;
     float deaths=0;
@@ -55,27 +59,62 @@ deathRate(string initialDate, string finalDate, string initialDateLinha, string 
     media = deaths/totalDays;
     mediaLinha = deathsLinha/totalDaysLinha;
     deathRate = (mediaLinha/media)*100 - 100;
-    string deathPercent = to_string(deathRate) + "%";
 
-    cout 
-    << "Estado: " << uf << endl << endl
-    << "Período de " << initialDate << " a " << finalDate << endl
-    << "Numero total de dias foi: " << totalDays << endl
-    << "Media de mortes é: " << media << endl
-    << "Numero total de mortes é: " << deaths << endl << endl
-    << "Período de " << initialDateLinha << " a " << finalDateLinha << endl
-    << "Numero total de dias foi: " << totalDaysLinha << endl
-    << "Media de mortes é: " << mediaLinha << endl
-    << "Numero total de mortes é: " << deathsLinha << endl << endl
-    << "Diferença de percentual entre os períodos: " << deathRate << "%"<< endl;
+    // cout 
+    // << "Estado: " << uf << endl << endl
+    // << "Período de " << initialDate << " a " << finalDate << endl
+    // << "Numero total de dias foi: " << totalDays << endl
+    // << "Media de mortes é: " << media << endl
+    // << "Numero total de mortes é: " << deaths << endl << endl
+    // << "Período de " << initialDateLinha << " a " << finalDateLinha << endl
+    // << "Numero total de dias foi: " << totalDaysLinha << endl
+    // << "Media de mortes é: " << mediaLinha << endl
+    // << "Numero total de mortes é: " << deathsLinha << endl << endl
+    // << "Diferença de percentual entre os períodos: " << deathRate << "%"<< endl;
 
-    return deathPercent;
+    return deathRate;
+}
+
+vector<string> ufs = {
+        "AC","AL","AM","AP","BA","CE","DF","ES","GO",
+        "MA","MG","MS","MT","PA","PB","PE","PI","PR",
+        "RJ","RN","RO","RR","RS","SC","SE","SP","TO"
+    };
+
+vector<int>
+calcAllPercentages(){
+    unsigned index=0;
+    vector<int> percents(27);
+    for (index=0;index<ufs.size();index++){
+        percents[index] = deathRate("2020-01-01","2020-08-06","2020-01-01","2020-09-07",ufs[index]);
+    }
+    return percents;
+}
+
+vector<string>
+allStatus(){
+    vector<string> showStatus(27);
+    vector<int> percents = calcAllPercentages();
+    unsigned index;
+    for (index=0;index<ufs.size();index++){
+        if(percents[index] < -15){
+            showStatus[index] = "BAIXA";
+        } else if(percents[index] > 15){
+            showStatus[index] = "ALTA";
+        } else {
+            showStatus[index] = "ESTÁVEL";
+        }
+    }
+    return showStatus;
 }
 
 int
 main(int argc,char *argv[]){
-    
-    string percent = deathRate("2020-01-01","2020-09-06","2020-01-01","2020-09-07","RJ");
-    cout << "PERCENT CHECK " << percent << endl;
+    unsigned index;
+    vector<string> status = allStatus();
+    vector<int> percents = calcAllPercentages();
+    for(index=0;index<ufs.size();index++){
+        cout << ufs[index] << "\t" << percents[index] << "%\t" << status[index] << endl;
+    }
     return 0;
 }
