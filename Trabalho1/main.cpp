@@ -73,6 +73,7 @@ main(int argc, char *argv[]){
         }
     }
 
+
     cout << "Encerrando o programa." << endl;
     return 0;
 }
