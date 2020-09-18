@@ -10,7 +10,8 @@ vector<int> Nacional::calcAllPercentages(string initialDate, string finalDate, s
     unsigned index=0;
     vector<int> percents(27);
     for (index=0;index<ufs.size();index++){
-        percents[index] = deathRate(initialDate,finalDate,initialDateLinha,finalDateLinha,ufs[index]);
+        Estadual estado(ufs[index]);
+        percents[index] = estado.deathRate(initialDate,finalDate,initialDateLinha,finalDateLinha,ufs[index]);
     }
     return percents;
 }
@@ -41,12 +42,14 @@ void Nacional::brazilStatus(string initialDate,string finalDate, string initialD
     float media;
     float mediaLinha;
     for(index=0;index<ufs.size();index++){
-        results = estadualDeaths(initialDate,finalDate, ufs[index]);
+        Estadual estado(ufs[index]);
+        results = estado.estadualDeaths(initialDate,finalDate, ufs[index]);
         deaths+=results[0];
         totalDays=results[1];
     }
     for(index=0;index<ufs.size();index++){
-        results = estadualDeaths(initialDateLinha,finalDateLinha, ufs[index]);
+        Estadual estado(ufs[index]);
+        results = estado.estadualDeaths(initialDateLinha,finalDateLinha, ufs[index]);
         deathsLinha+=results[0];
         totalDaysLinha=results[1];
     }
