@@ -4,7 +4,7 @@
 
 #include "estadual.hh"
 #include "nacional.hh"
-
+ 
 using namespace std;
 
 #define INVALID_ARGV                    2
@@ -52,7 +52,7 @@ main(int argc, char *argv[]){
                     break;
 
                 case 2:
-                    cout << "ta chegando b";
+                    
                     break;
                 
                 case 3:

@@ -1,19 +1,20 @@
-#include <string.h>
+#include <string>
 using namespace std;
 
 #ifndef _estadual_hh
 #define _estadual_hh    "estadual.hh"
-
+ 
 class Estadual {
     public:
-        Estadual(char[2]);
+        Estadual(string);
 
-        void setEstado(char[2]);
 
-        int getObitos();
     private:
-        char uf[2];
-        int CalcularObitos(char[2]);        
+        string uf;
+        int *estadualDeaths(string , string , string);
+        int deathRate(string , string , string , string , string );
+
+        friend class Nacional;
 };
 
 
