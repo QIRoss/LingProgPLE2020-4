@@ -66,8 +66,8 @@ main(int argc, char *argv[]){
                     break;
 
                 case 5:
-                    brazil.accumulatedData("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
-                    brazil.brazilStatus("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
+                    brazil.accumulatedData("2020-02-02","2020-08-07","2020-08-07","2020-09-07");
+                    brazil.brazilStatus("2020-02-02","2020-08-07","2020-08-07","2020-09-07");
                     break;
             }
             cout << "Pressione alguma tecla para continuar: " << endl;
