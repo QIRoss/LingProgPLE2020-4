@@ -95,3 +95,12 @@ void Nacional::higherAndLower(string initialDate, string finalDate, string initi
     }
     cout << "Estado com maior aumento é " << ufs[higherIndex] << " com " << higher << "% de aumento" << endl << "Estado com maior baixa é " << ufs[lowerIndex] << " com " << lower << "% de aumento" << endl;
 }
+
+void Nacional::accumulatedData(string initialDate,string finalDate, string initialDateLinha, string finalDateLinha){
+    unsigned index;
+    vector<string> status = allStatus(initialDate ,finalDate,initialDateLinha,finalDateLinha);
+    vector<int> percents = calcAllPercentages(initialDate ,finalDate,initialDateLinha,finalDateLinha);
+    for(index=0;index<ufs.size();index++){
+        cout << ufs[index] << "\t" << percents[index] << "%\t" << status[index] << endl;
+    }
+}

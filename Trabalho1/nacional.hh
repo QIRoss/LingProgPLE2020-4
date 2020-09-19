@@ -14,13 +14,11 @@ class Nacional {
         "MA","MG","MS","MT","PA","PB","PE","PI","PR",
         "RJ","RN","RO","RR","RS","SC","SE","SP","TO"
     };
-    
-
-    private:
         vector<int> calcAllPercentages(string , string , string , string);
         vector<string> allStatus(string initialDate, string finalDate, string initialDateLinha, string finalDateLinha);
         void brazilStatus(string initialDate,string finalDate, string initialDateLinha, string finalDateLinha);
         void higherAndLower(string initialDate, string finalDate, string initialDateLinha, string finalDateLinha);
+        void accumulatedData(string initialDate,string finalDate, string initialDateLinha, string finalDateLinha);
 };
 
 

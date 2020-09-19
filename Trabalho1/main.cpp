@@ -20,6 +20,7 @@ main(int argc, char *argv[]){
     int option = 0;
     unsigned index = 0;
     unsigned errorOpt = 0;
+    Nacional brazil;
 
     vector<string> menu = {
         "Digite a opção do menu que deseja:",
@@ -48,20 +49,24 @@ main(int argc, char *argv[]){
             
             switch(option){
                 case 1:
-                    cout << "ta chegando aa";
+                    
                     break;
 
                 case 2:
-                    
+                    brazil.accumulatedData("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
                     break;
                 
                 case 3:
+                    brazil.brazilStatus("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
                     break;
 
                 case 4:
+                    brazil.higherAndLower("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
                     break;
 
                 case 5:
+                    brazil.accumulatedData("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
+                    brazil.brazilStatus("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
                     break;
             }
 
