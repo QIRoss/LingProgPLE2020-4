@@ -18,6 +18,7 @@ main(int argc, char *argv[]){
         exit (INVALID_ARGV);
     }
     int option = 0;
+    int any = 1;
     unsigned index = 0;
     unsigned errorOpt = 0;
     Nacional brazil;
@@ -69,8 +70,9 @@ main(int argc, char *argv[]){
                     brazil.brazilStatus("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
                     break;
             }
+            cout << "Pressione alguma tecla para continuar: " << endl;
+            cin >> any;
             cout << endl;
-
             index = 0;
         } else {
             cout << "Digite uma opção valida:" << endl << endl;
