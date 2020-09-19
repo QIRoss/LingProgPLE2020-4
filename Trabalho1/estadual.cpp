@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -75,4 +76,35 @@ int Estadual::deathRate(string initialDate, string finalDate, string initialDate
     // << "Diferença de percentual entre os períodos: " << deathRate << "%"<< endl;
 
     return deathRate;
+}
+
+void Estadual::printedDeathRates(string initialDate, string finalDate, string initialDateLinha, string finalDateLinha, string uf){
+    float deathRate = 0;
+    float deaths=0;
+    float totalDays=0;
+    float deathsLinha=0;
+    float totalDaysLinha=0;
+    float media=0;
+    float mediaLinha=0;
+    int *results, *resultsLinha;
+    results = estadualDeaths(initialDate, finalDate, uf);
+    resultsLinha = estadualDeaths(initialDateLinha,finalDateLinha,uf);
+    deaths = results[0];
+    totalDays = results[1];
+    deathsLinha = resultsLinha[0];
+    totalDaysLinha = resultsLinha[1];
+    media = deaths/totalDays;
+    mediaLinha = deathsLinha/totalDaysLinha;
+    deathRate = (mediaLinha/media)*100 - 100;
+
+    cout << "Estado: " << uf << endl << endl
+    << "Período de " << initialDate << " a " << finalDate << endl
+    << "Numero total de dias foi: " << totalDays << endl
+    << "Media de mortes é: " << media << endl
+    << "Numero total de mortes é: " << deaths << endl << endl
+    << "Período de " << initialDateLinha << " a " << finalDateLinha << endl
+    << "Numero total de dias foi: " << totalDaysLinha << endl
+    << "Media de mortes é: " << mediaLinha << endl
+    << "Numero total de mortes é: " << deathsLinha << endl << endl
+    << "Diferença de percentual entre os períodos: " << deathRate << "%"<< endl;
 }

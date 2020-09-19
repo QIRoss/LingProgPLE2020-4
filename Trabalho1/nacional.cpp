@@ -104,3 +104,12 @@ void Nacional::accumulatedData(string initialDate,string finalDate, string initi
         cout << ufs[index] << "\t" << percents[index] << "%\t" << status[index] << endl;
     }
 }
+
+void Nacional::printAllEstados(string initialDate, string finalDate, string initialDateLinha, string finalDateLinha){
+    unsigned index=0;
+    vector<int> percents(27);
+    for (index=0;index<ufs.size();index++){
+        Estadual estado(ufs[index]);
+        estado.printedDeathRates(initialDate,finalDate,initialDateLinha,finalDateLinha,ufs[index]);
+    }
+}

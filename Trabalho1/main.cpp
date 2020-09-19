@@ -49,7 +49,7 @@ main(int argc, char *argv[]){
             
             switch(option){
                 case 1:
-                    
+                    brazil.printAllEstados("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
                     break;
 
                 case 2:
@@ -69,6 +69,7 @@ main(int argc, char *argv[]){
                     brazil.brazilStatus("2020-07-07","2020-08-07","2020-08-07","2020-09-07");
                     break;
             }
+            cout << endl;
 
             index = 0;
         } else {

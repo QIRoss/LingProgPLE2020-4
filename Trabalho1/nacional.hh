@@ -19,6 +19,7 @@ class Nacional {
         void brazilStatus(string initialDate,string finalDate, string initialDateLinha, string finalDateLinha);
         void higherAndLower(string initialDate, string finalDate, string initialDateLinha, string finalDateLinha);
         void accumulatedData(string initialDate,string finalDate, string initialDateLinha, string finalDateLinha);
+        void printAllEstados(string initialDate, string finalDate, string initialDateLinha, string finalDateLinha);
 };
 
 

@@ -13,6 +13,7 @@ class Estadual {
         string uf;
         int *estadualDeaths(string , string , string);
         int deathRate(string , string , string , string , string );
+        void printedDeathRates(string,string,string,string,string);
 
         friend class Nacional;
 };
