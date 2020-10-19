@@ -1,39 +1,28 @@
 # TrabalhoGrafos
+# Lucas de Queiroz dos Reis
 
-# Leitor de Linhas de Arquivo Texto que encontre as palavras
-# mais utilizadas
+# Introdução:
 
-# Grafo assimetrico
-# Vertices - palavras
-# Arestas - pares de palavras que aparecem de forma consecutiva
+Este trabalho foi concluído utilizando uma lista de adjacências ao invés de ponteiros.
+"Node" é uma classe (que poderia ser uma struct) que contém apenas os valores da string a ser adicionada.
+"Graph" é uma classe que contém o método para ler o arquivo txt e gerar o resultado das incidências.
+Considerando que o enunciado diz que é para utilizar apenas parágrafos, abri mão do O(n.log(n)) do grafo feito com ponteiros e parti para uma abordagem O(n²) utilizando lista de adjacências.
 
-# Palavras mais utilizadas
-# Quais as sequencias de N palavras consecutivas mais utilizadas
+# Uso:
 
-<!-- #Texto
+$ make
+$./main "<arquivo texto a ser processado>" "<numero de palavras a serem capturadas>"
 
-Modele o problema como um grafo assimétrico, onde os vértices são as palavras e as
-arestas são formadas entre pares de palavras que aparecem de forma consecutiva na
-frase. As arestas podem ser ponderadas com peso igual ao número de aparições no texto.
-Ao final, um grafo como o representado na figura abaixo, relativo ao texto do exemplo, será
-modelado. Percebe-se pelo grafo abaixo que a aresta formada entre as palavras “essa” e
-“frase” é a de maior destaque, assim como o rótulo dos vértices referentes às palavras
-“frase” e “pontuação”. Isso indica que tanto a sequência “essa frase”, quanto as palavras
-“frase” e “pontuação” foram as mais utilizadas no texto.
+Arquivo "exemplo.txt" do enunciado acompanha o trabalho.
 
-O programa implementa o grafo como uma classe. Da mesma forma, as arestas e os
-vértices também são implementados como classes. A classe Grafo possui um método de
-inserção de arestas, enquanto a classe aresta possui um método construtor que define os
-seus vértices de origem e de destino. Os vértices e arestas podem ser criados conforme o
-texto é lido. Ainda, a classe Grafo possui um método que retorna o vértice mais utilizado,
-assim como a sequência de N arestas mais comum, ou seja, a sequência cuja soma dos
-pesos das arestas é maior. Dessa forma, pede-se a implementação de um programa que
-responda as seguintes perguntas:
-1. Qual é(são) a(s) palavra(s) mais utilizada(s) no texto?
-2. Qual(is) é(são) a(s) sequência(s) de N palavras consecutivas mais utilizada(s) no
-texto (uma opção para a solução do problema é abstrair o conceito de aresta para
-uma estrutura formada por N vértices em sequência ao invés de apenas dois, como
-feito tradicionalmente)?
-Observação 1: Não é necessário produzir uma figura como a apresentada no enunciado.
-A figura é apenas ilustrativa.
-Observação 2: Use textos pequenos com apenas um parágrafo. -->
+# Algoritmo:
+
+Para n=1, todas as palavras capturadas tem o seu primeiro caractere minimizado. Se as palavras tiverem pontuação como último caractere, este caractere é removido.
+Ao encontrar uma palavra, verifica-se se esta palavra já está na lista que é composta por um VETOR DE NÓS. Caso ela esteja na lista, o valor "count" do nó é incrementado. Caso ela não se encontre, um nó com esta palavra e valor "count" 1 é adicionado ao final da lista.
+
+Para n>1, todas as palavras capturadas são armazenadas em um buffer. Quando esse buffer chega a n, estas n palavras são concatenadas na mesma string. Para a próxima iteração do laço, a primeira string do vector queue é removida e a próxima palavra adicionada ao final do vetor, mantendo assim as n palavras enquando conserva as n-1 palavras anteriores. Caso seja encontrada alguma pontuação, este buffer "queue" é esvaziado e recomença a busca. A verificação da lista de incidências é feita da mesma forma que para n=1.
+
+# Auto-avaliação:
+
+Me faltou intimidade com a sintaxe de C++ em alguns pontos. O código foi desnecessariamente repetitivo e com certeza há soluções mais eficientes e/ou elegantes que a minha.
+O código está divido em n=1 e n>1 porém o bloco de n>1 também funciona para n=1. Deixei propositalemente estas duas soluções separadas para mostrar que procurei primeiro a solução do caso particular (que ignora pontuação) e logo depois o algoritmo do caso global. Outras adições que poderiam ser feitas no código seria melhorar esteticamente o output na CLI.

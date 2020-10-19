@@ -45,7 +45,7 @@ void Graph::getIncidencyList(string filename, unsigned short n){
         for(i=0;i<incidencyList.size();i++){
             cout << incidencyList[i].word << "\t\t:" << incidencyList[i].count << endl;
         }
-    } else {
+    } else {  /* n > 1*/
         while(file>>word){
             choice = false;
             lastWord = false;
@@ -58,6 +58,7 @@ void Graph::getIncidencyList(string filename, unsigned short n){
             }
             queue.push_back(word);
             if(queue.size() == n){
+                words.clear();
                 for(k=0;k<n;k++){
                     words = words + queue[k] + " ";
                 }
