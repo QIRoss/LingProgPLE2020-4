@@ -21,6 +21,7 @@ void Graph::getIncidencyList(string filename, unsigned short n){
 
     while (file >> word) {
         choice = false;
+        word[0] = tolower(word[0]);
         for(j=0;j<incidencyList.size();j++){
             if(incidencyList[j].word == word){
                 incidencyList[j].count++;
@@ -35,7 +36,7 @@ void Graph::getIncidencyList(string filename, unsigned short n){
         }
     }
     for(i=0;i<incidencyList.size();i++){
-        cout << incidencyList[i].word << incidencyList[i].count << endl;
+        cout << incidencyList[i].word << "\t\t:" << incidencyList[i].count << endl;
     }
 
     file.close();

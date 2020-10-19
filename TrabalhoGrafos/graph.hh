@@ -16,7 +16,6 @@ class Graph {
         void getIncidencyList(string ,unsigned short);
 
     private:
-        // void addWord(vector<node>, string);
 };
 
 #endif
