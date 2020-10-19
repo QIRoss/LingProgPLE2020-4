@@ -11,7 +11,7 @@ Considerando que o enunciado diz que é para utilizar apenas parágrafos, abri m
 # Uso:
 
 $ make
-$./main "<arquivo texto a ser processado>" "<numero de palavras a serem capturadas>"
+$./main "arquivo texto a ser processado" "numero de palavras a serem capturadas"
 
 Arquivo "exemplo.txt" do enunciado acompanha o trabalho.
 
