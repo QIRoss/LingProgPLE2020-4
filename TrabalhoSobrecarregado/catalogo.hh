@@ -1,6 +1,7 @@
 // #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 using namespace std;
 
 #ifndef _CATALOGO_HH_
@@ -12,6 +13,8 @@ struct filme {
     double notaFilme;
 };
 
+vector<filme> operator+=(vector<filme>, filme);
+
 class Catalogo {
     private:
         string txt;
@@ -19,8 +22,7 @@ class Catalogo {
         vector<filme> estrutura;
     public:
         Catalogo(string, unsigned);
-        Catalogo & operator+=(filme &);
-        Catalogo & operator+=(vector<filme> &);
+        Catalogo operator+=(vector<filme>);
         Catalogo & operator<(filme &);
         Catalogo & operator>(filme &);
         Catalogo & operator==(filme &);

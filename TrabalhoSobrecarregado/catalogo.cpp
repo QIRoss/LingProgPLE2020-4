@@ -33,9 +33,12 @@ void Catalogo::writeFile(){
     unsigned index;
     if(file.is_open()){
         for(index=0;index<estrutura.size();index++){
-            file << estrutura[index].nomeFilme;
-            file << estrutura[index].nomeProdutora;
-            file << estrutura[index].notaFilme;
+                file << estrutura[index].nomeFilme;
+                file << '\n';
+                file << estrutura[index].nomeProdutora;
+                file << '\n';
+                file << estrutura[index].notaFilme;
+                file << '\n';
         }
         file.close();
     }
@@ -50,8 +53,12 @@ Catalogo::~Catalogo(){
     writeFile();
 };
 
-void Catalogo::insereOrdenada(filme filmeInicializado){
+vector<filme> operator+=(vector<filme> destination, filme some){
+    destination.push_back(some);
+};
 
+void Catalogo::insereOrdenada(filme filmeInicializado){
+    estrutura+=filmeInicializado;
 };
 
 void Catalogo::removeFilme(filme nomeDoFilme){
@@ -59,11 +66,11 @@ void Catalogo::removeFilme(filme nomeDoFilme){
 };
 
 filme* Catalogo::buscaFilme(string filmeEmBusca){
-
+    return NULL;
 };
 
 filme* Catalogo::editaFilme(filme filmeEmEdicao){
-
+    return NULL;
 };
 
 void Catalogo::imprimeCatalogo(){

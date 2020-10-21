@@ -4,3 +4,6 @@ DreamWorks
 Teste
 Foo
 9.9
+AnotherMovie
+StudioRandom
+7

@@ -10,6 +10,11 @@ using namespace std;
 
 int
 main(int argc,char *argv[]){
-
+    Catalogo cat("filmes.txt",10);
+    filme movie;
+    movie.nomeFilme = "Bianca";
+    movie.nomeProdutora = "Claudia";
+    movie.notaFilme = 10;
+    cat.insereOrdenada(movie);
     return OK;
 }
