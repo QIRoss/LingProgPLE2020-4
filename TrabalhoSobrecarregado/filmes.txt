@@ -1,9 +1,15 @@
 AnotherMovie
 StudioRandom
 7
+Bianca
+Claudia
+10
 Shrek
 DreamWorks
 5
 Teste
 Foo
 9.9
+Ziode
+Night
+8

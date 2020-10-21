@@ -1,4 +1,4 @@
-// #include <iostream>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <iomanip>
@@ -29,6 +29,7 @@ class Catalogo {
         unsigned maxVector;
         vector<filme> estrutura;
     public:
+        friend class ostream;
         Catalogo(string, unsigned);
         Catalogo & operator()(string &);
         ~Catalogo();
@@ -42,9 +43,10 @@ class Catalogo {
         void setFile(string);
         void readFile();
         void writeFile();
+        friend ostream & operator<<(ostream &,const Catalogo &);
+        void operator>>(Catalogo);
 };
 
-// ostream operator<<(Catalogo);
-// istream operator>>(filme);
+
 
 #endif

@@ -77,14 +77,13 @@ operator+=(vector<filme> destination, filme toAdd){
     unsigned index;
     for(index = 0;index<destination.size();index++){
         if(toAdd < destination[index]){
-            destination.insert(destination.begin() + index - 1,toAdd);
+            destination.insert(destination.begin() + index,toAdd);
             return destination;
         } else if(toAdd == destination[index]){
             return destination;
-        } else {
-            index++;
         }
     }
+    destination.push_back(toAdd);
     return destination;
 }
 
@@ -102,7 +101,7 @@ operator-=(vector<filme> destination, filme toErase){
     unsigned index;
     for(index=0;index<destination.size();index++){
         if(destination[index] == toErase){
-            destination.erase(destination.begin()+index-1);
+            destination.erase(destination.begin()+index);
             return destination;
         }
     }
@@ -110,15 +109,23 @@ operator-=(vector<filme> destination, filme toErase){
 }
 
 void Catalogo::insereOrdenada(filme filmeInicializado){
-    estrutura = estrutura+=filmeInicializado;
+    if (estrutura.size() < maxVector){
+        estrutura = estrutura+=filmeInicializado;
+    } else {
+        cout << "CATALOGO CHEIO" << endl;
+    }
 }
 
 void Catalogo::insereOrdenada(vector<filme> filmesInicializados){
-    estrutura = estrutura+=filmesInicializados;
+    if (estrutura.size() < maxVector){
+        estrutura = estrutura+= filmesInicializados;
+    } else {
+        cout << "CATALOGO CHEIO" << endl;
+    }
 }
 
 void Catalogo::removeFilme(filme toDelete){
-    estrutura = estrutura-=toDelete;
+        estrutura = estrutura-=toDelete;
 }
 
 filme* Catalogo::buscaFilme(string filmeEmBusca){
@@ -137,13 +144,28 @@ filme* Catalogo::editaFilme(filme filmeEmEdicao){
     }
 }
 
-void Catalogo::imprimeCatalogo(){
-    
-
-}
 
 void Catalogo::filmeMaisBemAvaliado(){
 
+}
+
+ostream & operator<<(ostream &out, const Catalogo &c){
+    unsigned index;
+    for(index=0;index<c.estrutura.size();index++){
+        cout << "Filme " << index + 1 << endl
+        << "Nome: " << c.estrutura[index].nomeFilme << endl
+        << "Produtora: " << c.estrutura[index].nomeProdutora << endl
+        << "Nota: " << c.estrutura[index].notaFilme << endl << endl;
+    }
+    return out;
+}
+ 
+void Catalogo::operator>>(Catalogo c){
+
+}
+
+void Catalogo::imprimeCatalogo(){
+    cout << *this;
 }
 
 
