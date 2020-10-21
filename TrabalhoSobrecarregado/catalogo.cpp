@@ -53,8 +53,11 @@ Catalogo::~Catalogo(){
     writeFile();
 };
 
-vector<filme> operator+=(vector<filme> destination, filme some){
+void operator+=(vector<filme> destination, filme some){
+    cout << destination.size() << endl;
     destination.push_back(some);
+    cout << destination.size() << endl;
+    cout << destination[0].nomeFilme << destination[1].nomeFilme << destination[2].nomeFilme << destination[3].nomeFilme << endl;
 };
 
 void Catalogo::insereOrdenada(filme filmeInicializado){
