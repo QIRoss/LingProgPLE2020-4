@@ -16,6 +16,13 @@ struct filme {
 vector<filme> operator+=(vector<filme>, filme);
 vector<filme> operator+=(vector<filme>,vector<filme>);
 
+bool operator<(filme, filme);
+bool operator>(filme, filme);
+
+bool operator==(filme,filme);
+
+vector<filme> operator-=(vector<filme>, filme);
+
 class Catalogo {
     private:
         string txt;
@@ -23,10 +30,6 @@ class Catalogo {
         vector<filme> estrutura;
     public:
         Catalogo(string, unsigned);
-        Catalogo & operator<(filme &);
-        Catalogo & operator>(filme &);
-        Catalogo & operator==(filme &);
-        Catalogo & operator-=(filme &);
         Catalogo & operator()(string &);
         ~Catalogo();
         void insereOrdenada(filme);
@@ -40,5 +43,8 @@ class Catalogo {
         void readFile();
         void writeFile();
 };
+
+ostream operator<<(Catalogo);
+istream operator>>(filme);
 
 #endif

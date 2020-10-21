@@ -21,7 +21,6 @@ main(int argc,char *argv[]){
     movieTwo.nomeProdutora = "Night";
     movieTwo.notaFilme = 8;
     vector<filme> movies = {movie, movieTwo};
-    
-    cat.insereOrdenada(movies);
+    // cat.insereOrdenada(movies);
     return OK;
 }

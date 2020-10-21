@@ -54,17 +54,47 @@ Catalogo::~Catalogo(){
     writeFile();
 }
 
+bool
+operator<(filme left, filme right){
+        if(left.nomeFilme < right.nomeFilme) return true;
+        return false;
+}
+
+bool
+operator>(filme left, filme right){
+        if(left.nomeFilme > right.nomeFilme) return true;
+        return false;
+}
+
+bool
+operator==(filme left, filme right){
+    if(left.nomeFilme == right.nomeFilme) return true;
+    return false;
+}
+
 vector<filme> 
-operator+=(vector<filme> destination, filme some){
-    destination.push_back(some);
+operator+=(vector<filme> destination, filme toAdd){
+    destination.push_back(toAdd);
     return destination;
 }
 
 vector<filme> 
-operator+=(vector<filme> destination, vector<filme> some){
+operator+=(vector<filme> destination, vector<filme> toAdd){
     unsigned index = 0;
-    for(index=0;index<some.size();index++){
-        destination.push_back(some[index]);
+    for(index=0;index<toAdd.size();index++){
+        destination.push_back(toAdd[index]);
+    }
+    return destination;
+}
+
+vector<filme>
+operator-=(vector<filme> destination, filme toErase){
+    unsigned index;
+    for(index=0;index<destination.size();index++){
+        if(destination[index] == toErase){
+            destination.erase(destination.begin()+index);
+            return destination;
+        }
     }
     return destination;
 }
@@ -77,12 +107,12 @@ void Catalogo::insereOrdenada(vector<filme> filmesInicializados){
     estrutura = estrutura+=filmesInicializados;
 }
 
-void Catalogo::removeFilme(filme nomeDoFilme){
-
+void Catalogo::removeFilme(filme toDelete){
+    estrutura = estrutura-=toDelete;
 }
 
 filme* Catalogo::buscaFilme(string filmeEmBusca){
-    return NULL;
+
 }
 
 filme* Catalogo::editaFilme(filme filmeEmEdicao){
@@ -90,6 +120,7 @@ filme* Catalogo::editaFilme(filme filmeEmEdicao){
 }
 
 void Catalogo::imprimeCatalogo(){
+    
 
 }
 
