@@ -14,7 +14,7 @@ struct filme {
 };
 
 void operator+=(vector<filme>, filme);
-
+void operator+=(vector<filme>,vector<filme>);
 
 class Catalogo {
     private:
@@ -23,7 +23,6 @@ class Catalogo {
         vector<filme> estrutura;
     public:
         Catalogo(string, unsigned);
-        Catalogo operator+=(vector<filme>);
         Catalogo & operator<(filme &);
         Catalogo & operator>(filme &);
         Catalogo & operator==(filme &);
@@ -31,6 +30,7 @@ class Catalogo {
         Catalogo & operator()(string &);
         ~Catalogo();
         void insereOrdenada(filme);
+        void insereOrdenada(vector<filme>);
         void removeFilme(filme);
         filme* buscaFilme(string);
         filme* editaFilme(filme);
