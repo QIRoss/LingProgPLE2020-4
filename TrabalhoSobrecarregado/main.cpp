@@ -17,10 +17,10 @@ main(int argc,char *argv[]){
     movie.nomeProdutora = "Claudia";
     movie.notaFilme = 10;
 
-    movieTwo.nomeFilme = "Code";
+    movieTwo.nomeFilme = "Siode";
     movieTwo.nomeProdutora = "Night";
     movieTwo.notaFilme = 8;
     vector<filme> movies = {movie, movieTwo};
-    // cat.insereOrdenada(movies);
+    cat.insereOrdenada(movies);
     return OK;
 }

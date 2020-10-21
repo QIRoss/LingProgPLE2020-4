@@ -74,15 +74,25 @@ operator==(filme left, filme right){
 
 vector<filme> 
 operator+=(vector<filme> destination, filme toAdd){
-    destination.push_back(toAdd);
+    unsigned index;
+    for(index = 0;index<destination.size();index++){
+        if(toAdd < destination[index]){
+            destination.insert(destination.begin() + index - 1,toAdd);
+            return destination;
+        } else if(toAdd == destination[index]){
+            return destination;
+        } else {
+            index++;
+        }
+    }
     return destination;
 }
 
 vector<filme> 
 operator+=(vector<filme> destination, vector<filme> toAdd){
-    unsigned index = 0;
-    for(index=0;index<toAdd.size();index++){
-        destination.push_back(toAdd[index]);
+    unsigned indexJ = 0;
+    for(indexJ=0;indexJ<toAdd.size();indexJ++){
+        destination=destination+=toAdd[indexJ];
     }
     return destination;
 }
@@ -92,7 +102,7 @@ operator-=(vector<filme> destination, filme toErase){
     unsigned index;
     for(index=0;index<destination.size();index++){
         if(destination[index] == toErase){
-            destination.erase(destination.begin()+index);
+            destination.erase(destination.begin()+index-1);
             return destination;
         }
     }
@@ -112,11 +122,19 @@ void Catalogo::removeFilme(filme toDelete){
 }
 
 filme* Catalogo::buscaFilme(string filmeEmBusca){
+    if(false){
 
+    } else {
+        return NULL;
+    }
 }
 
 filme* Catalogo::editaFilme(filme filmeEmEdicao){
-    return NULL;
+    if(false){
+
+    } else {
+        return NULL;
+    }
 }
 
 void Catalogo::imprimeCatalogo(){

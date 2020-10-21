@@ -44,7 +44,7 @@ class Catalogo {
         void writeFile();
 };
 
-ostream operator<<(Catalogo);
-istream operator>>(filme);
+// ostream operator<<(Catalogo);
+// istream operator>>(filme);
 
 #endif
