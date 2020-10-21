@@ -13,8 +13,8 @@ struct filme {
     double notaFilme;
 };
 
-void operator+=(vector<filme>, filme);
-void operator+=(vector<filme>,vector<filme>);
+vector<filme> operator+=(vector<filme>, filme);
+vector<filme> operator+=(vector<filme>,vector<filme>);
 
 class Catalogo {
     private:

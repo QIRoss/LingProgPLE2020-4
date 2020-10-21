@@ -31,6 +31,7 @@ void Catalogo::setFile(string file){
 void Catalogo::writeFile(){
     ofstream file(txt);
     unsigned index;
+    // file.open(txt.c_str());
     if(file.is_open()){
         for(index=0;index<estrutura.size();index++){
                 file << estrutura[index].nomeFilme;
@@ -53,25 +54,27 @@ Catalogo::~Catalogo(){
     writeFile();
 }
 
-void operator+=(vector<filme> destination, filme some){
-    cout << destination.size() << endl;
+vector<filme> 
+operator+=(vector<filme> destination, filme some){
     destination.push_back(some);
-    cout << destination.size() << endl;
+    return destination;
 }
 
-void operator+=(vector<filme> destination, vector<filme> some){
+vector<filme> 
+operator+=(vector<filme> destination, vector<filme> some){
     unsigned index = 0;
     for(index=0;index<some.size();index++){
         destination.push_back(some[index]);
     }
+    return destination;
 }
 
 void Catalogo::insereOrdenada(filme filmeInicializado){
-    estrutura+=filmeInicializado;
+    estrutura = estrutura+=filmeInicializado;
 }
 
 void Catalogo::insereOrdenada(vector<filme> filmesInicializados){
-    estrutura+=filmesInicializados;
+    estrutura = estrutura+=filmesInicializados;
 }
 
 void Catalogo::removeFilme(filme nomeDoFilme){
