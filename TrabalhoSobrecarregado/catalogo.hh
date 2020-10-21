@@ -14,16 +14,23 @@ struct filme {
 
 class Catalogo {
     private:
-        string file;
-        vector<filme> estrutura[10];
-
+        string txt;
+        unsigned maxVector;
+        vector<filme> estrutura;
     public:
-        Catalogo(string);
+        Catalogo(string, unsigned);
+        Catalogo & operator+=(filme &);
+        Catalogo & operator+=(vector<filme> &);
+        Catalogo & operator<(filme &);
+        Catalogo & operator>(filme &);
+        Catalogo & operator==(filme &);
+        Catalogo & operator-=(filme &);
+        Catalogo & operator()(string &);
         ~Catalogo();
-        void insereOrdenada();
-        void removeFilme();
+        void insereOrdenada(filme);
+        void removeFilme(filme);
         filme* buscaFilme(string);
-        filme* editaFilme();
+        filme* editaFilme(filme);
         void imprimeCatalogo();
         void filmeMaisBemAvaliado();
         void setFile(string);
