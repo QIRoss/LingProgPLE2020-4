@@ -38,11 +38,10 @@ class Catalogo {
         void editaFilme(Catalogo, filme);
         void imprimeCatalogo();
         void filmeMelhorAvaliado();
-        void setFile(string);
         void readFile();
         void writeFile();
         friend ostream & operator<<(ostream &,const Catalogo &);
-        friend istream & operator>>(istream &, Catalogo );
+        friend istream & operator>>(istream &, Catalogo &);
         friend ostream & operator<<(ostream &, filme &);
 };
 

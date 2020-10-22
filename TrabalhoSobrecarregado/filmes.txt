@@ -4,9 +4,6 @@ AlgumNome
 Outro
 Filme
 5
-Teste
-Foo
-9.9
 Ziode
 Night
 7

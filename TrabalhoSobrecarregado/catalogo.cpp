@@ -23,15 +23,11 @@ void Catalogo::readFile(){
     }
     file.close();
 }
-
-void Catalogo::setFile(string file){
-    
-}
  
 void Catalogo::writeFile(){
     ofstream file(txt);
     unsigned index;
-    // file.open(txt.c_str());
+    file.open(txt.c_str());
     if(file.is_open()){
         for(index=0;index<estrutura.size();index++){
                 file << estrutura[index].nomeFilme;
@@ -48,13 +44,10 @@ void Catalogo::writeFile(){
 Catalogo::Catalogo(string file, unsigned maxVec = 10) {
     maxVector = maxVec;
     txt = file;
-    // setFile(file);
     readFile();
-    cout << "Construindo Catalogo from File " << txt << " limite de tamanho de vetor " << maxVector << "." << endl;
 }
 
 Catalogo::~Catalogo(){
-    cout << "Destruindo Objeto Catalogo e reescrevendo arquivo " << txt << "." << endl;
     writeFile();
 }
 
@@ -214,7 +207,7 @@ void Catalogo::imprimeCatalogo(){
     cout << *this;
 }
  
-istream & operator>>(istream &in, Catalogo c){
+istream & operator>>(istream &in, Catalogo &c){
     filme temp;
     bool verify;
     string loop;
