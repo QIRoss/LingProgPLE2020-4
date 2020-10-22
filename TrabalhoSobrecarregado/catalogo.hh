@@ -33,18 +33,19 @@ class Catalogo {
         Catalogo(string, unsigned);
         Catalogo & operator()(string &);
         ~Catalogo();
-        void insereOrdenada(filme);
-        void insereOrdenada(vector<filme>);
-        void removeFilme(filme);
+        bool insereOrdenada(filme);
+        bool insereOrdenada(vector<filme>);
+        bool removeFilme(filme);
         filme* buscaFilme(string);
         filme* editaFilme(filme);
         void imprimeCatalogo();
-        void filmeMaisBemAvaliado();
+        void filmeMelhorAvaliado();
         void setFile(string);
         void readFile();
         void writeFile();
         friend ostream & operator<<(ostream &,const Catalogo &);
         friend istream & operator>>(istream &, Catalogo &);
+        friend ostream & operator<<(ostream &, filme &);
 };
 
 

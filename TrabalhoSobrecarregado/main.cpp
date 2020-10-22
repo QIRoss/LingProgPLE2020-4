@@ -19,29 +19,56 @@ main(int argc,char *argv[]){
     }
     int option = 0;
     unsigned index = 0;
+    string any;
 
     Catalogo cat(argv[1],(unsigned) stoul(argv[2],NULL));
 
     vector<string> menu = {
         "Digite a opção do menu que deseja:",
-        "1 - Adicionar um filme.",
-        "2 - Adicionar multiplos filmes.",
-        "3 - Remover um filme.",
-        "4 - Buscar um filme.",
-        "5 - Editar um filme.", 
-        "6 - Imprimir todos os filmes.",
-        "7 - Ver filme mais bem avaliado.",
-        "8 - Sair do Programa."
+        "1 - Adicionar/Remover filmes.",
+        "2 - Buscar um filme.",
+        "3 - Editar um filme.", 
+        "4 - Imprimir todos os filmes.",
+        "5 - Ver filme mais bem avaliado.",
+        "6 - Sair do Programa."
     };
-
-    for(index = 0; index < menu.size() ;index++){
+    while(option != 6){
+        for(index = 0; index < menu.size() ;index++){
             cout << menu[index] << endl;
         }
-    cout << endl;
-    // while(option !=8){
-        
-    // }
-    cin >> cat;
-    cat.imprimeCatalogo();
+        cout << endl;
+        cin >> option;
+
+        if (option > 0 && option < 6){
+            cout << "Você digitou:" << option << endl;
+            switch(option){
+                case 1:
+                    cin >> cat;
+                    break;
+
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4:
+                    cat.imprimeCatalogo();
+                    break;
+
+                case 5:
+                    cat.filmeMelhorAvaliado();
+                    break;
+            }
+            cout << "Pressione alguma tecla para continuar: " << endl;
+            cin >> any;
+            cout << endl;
+            index = 0;
+            cout << "Digite uma nova opção:" << endl;
+        }
+    }
+    cout << "Encerrando o programa." << endl;
     return OK;
 }
