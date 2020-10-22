@@ -14,18 +14,15 @@ using namespace std;
 int
 main(int argc,char *argv[]){
     if (argc != NUMERO_ARGUMENTOS){
-        cout << "Uso %s:\t<arquivoBase.txt> <tamanhoMaximo>" << endl;
+        cout << "Uso "<< argv[0] <<":\t<arquivoBase.txt> <tamanhoMaximo>" << endl;
         exit (NUMERO_ARGUMENTOS_INVALIDO);
     }
     int option = 0;
     unsigned index = 0;
     string any;
-    filme test;
-    test.nomeFilme = "Teste";
-    test.nomeProdutora = "algo";
-    test.notaFilme = 4;
+    filme temp;
 
-    Catalogo cat(argv[1],(unsigned) stoul(argv[2],NULL));
+    Catalogo cat(argv[1],(unsigned) stoul(argv[2],NULL,10));
 
     vector<string> menu = {
         "Digite a opção do menu que deseja:",
@@ -51,11 +48,15 @@ main(int argc,char *argv[]){
                     break;
 
                 case 2:
-                    cat.buscaFilme(cat, test);
+                    cout << "Digite o filme que deseja buscar:" << endl;
+                    cin >> temp.nomeFilme;
+                    cat.buscaFilme(cat, temp);
                     break;
 
                 case 3:
-                    cat.editaFilme(cat, test);
+                    cout << "Digite o filme que deseja editar:" << endl;
+                    cin >> temp.nomeFilme;
+                    cat.editaFilme(cat, temp);
                     break;
 
                 case 4:

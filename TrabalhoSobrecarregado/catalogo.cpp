@@ -25,7 +25,7 @@ void Catalogo::readFile(){
 }
 
 void Catalogo::setFile(string file){
-    txt = file;
+    
 }
  
 void Catalogo::writeFile(){
@@ -45,12 +45,16 @@ void Catalogo::writeFile(){
     }
 }
 
-Catalogo::Catalogo(string file, unsigned maxVector = 10) {
-    setFile(file);
+Catalogo::Catalogo(string file, unsigned maxVec = 10) {
+    maxVector = maxVec;
+    txt = file;
+    // setFile(file);
     readFile();
+    cout << "Construindo Catalogo from File " << txt << " limite de tamanho de vetor " << maxVector << "." << endl;
 }
 
 Catalogo::~Catalogo(){
+    cout << "Destruindo Objeto Catalogo e reescrevendo arquivo " << txt << "." << endl;
     writeFile();
 }
 
@@ -72,8 +76,7 @@ operator==(filme left, filme right){
     return false;
 }
 
-vector<filme> 
-operator+=(vector<filme> destination, filme toAdd){
+vector<filme> operator+=(vector<filme> destination, filme toAdd){
     unsigned index;
     for(index = 0;index<destination.size();index++){
         if(toAdd < destination[index]){
@@ -112,7 +115,9 @@ bool Catalogo::insereOrdenada(filme filmeInicializado){
     unsigned initialSize = estrutura.size();
     if (estrutura.size() < maxVector){
         estrutura = estrutura+=filmeInicializado;
-        if(initialSize != estrutura.size()) return true;
+        if(initialSize != estrutura.size()) {
+            return true;
+        }
     } else {
         cout << "CATALOGO CHEIO" << endl;
     }
@@ -120,10 +125,12 @@ bool Catalogo::insereOrdenada(filme filmeInicializado){
 }
 
 bool Catalogo::insereOrdenada(vector<filme> filmesInicializados){
-    unsigned initialSize = estrutura.size();
+    unsigned const initialSize = estrutura.size();
     if (estrutura.size() < maxVector){
         estrutura = estrutura+= filmesInicializados;
-        if(initialSize != estrutura.size()) return true;
+        if(initialSize != estrutura.size()) {
+            return true;
+        }
     } else {
         cout << "CATALOGO CHEIO" << endl;
     }
@@ -133,7 +140,9 @@ bool Catalogo::insereOrdenada(vector<filme> filmesInicializados){
 bool Catalogo::removeFilme(filme toDelete){
         unsigned size = estrutura.size();
         estrutura = estrutura-=toDelete;
-        if(size != estrutura.size()) return true;
+        if(size != estrutura.size()) {
+            return true;
+        }
         return false;
 }
 
@@ -171,25 +180,33 @@ filme* Catalogo::operator()(filme search){
 }
 
 void Catalogo::buscaFilme(Catalogo cat, filme search){
-    filme thePointer = *cat(search);
-    cout << thePointer;
+    if (cat(search) == NULL){
+        cout << "Filme nao encontrado." << endl;
+    } else {
+        filme thePointer = *cat(search);
+        cout << thePointer;
+    }
 }
 
 void Catalogo::editaFilme(Catalogo cat, filme toEdit){
-    char verify;
-    filme changer;
-    cout << "O quer editar?" << endl << "Digite 1 p/ Produtora" << endl << "Digita 2 p/ Nota" << endl;
-    cin >> verify;
-    if(verify == '1'){
-        cout << "Digite a nova produtora: " << endl;
-        cin >> changer.nomeProdutora;
-        cat(toEdit)->nomeProdutora = changer.nomeProdutora;
-    } else if(verify == '2'){
-        cout << "Digite a nova nota: " << endl;
-        cin >> changer.notaFilme;
-        cat(toEdit)->notaFilme = changer.notaFilme;
+    if (cat(toEdit) == NULL){
+        cout << "Filme nao encontrado." << endl;
     } else {
-        cout << "Nenhuma opção correta, nada foi feito." << endl;
+        char verify;
+        filme changer;
+        cout << "O quer editar?" << endl << "Digite 1 p/ Produtora" << endl << "Digita 2 p/ Nota" << endl;
+        cin >> verify;
+        if(verify == '1'){
+            cout << "Digite a nova produtora: " << endl;
+            cin >> changer.nomeProdutora;
+            cat(toEdit)->nomeProdutora = changer.nomeProdutora;
+        } else if(verify == '2'){
+            cout << "Digite a nova nota: " << endl;
+            cin >> changer.notaFilme;
+            cat(toEdit)->notaFilme = changer.notaFilme;
+        } else {
+            cout << "Nenhuma opção correta, nada foi feito." << endl;
+        }
     }
 }
 
@@ -197,7 +214,7 @@ void Catalogo::imprimeCatalogo(){
     cout << *this;
 }
  
-istream & operator>>(istream &in, Catalogo &c){
+istream & operator>>(istream &in, Catalogo c){
     filme temp;
     bool verify;
     string loop;
@@ -217,15 +234,8 @@ istream & operator>>(istream &in, Catalogo &c){
             cout << "Filme removido do catalogo." << endl;
         }
     }
-    cout << "Deseja adicionar/remover mais um filme?(S/N)" << endl;
-    cin >> loop;
-    loop = tolower(loop[0]);
-    if (loop == "s"){
-        cin >> c;
-    }
     return in;
 }
-
 
 void Catalogo::filmeMelhorAvaliado(){
     unsigned index = 0;

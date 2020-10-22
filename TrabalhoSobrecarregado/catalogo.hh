@@ -15,12 +15,9 @@ struct filme {
 
 vector<filme> operator+=(vector<filme>, filme);
 vector<filme> operator+=(vector<filme>,vector<filme>);
-
 bool operator<(filme, filme);
 bool operator>(filme, filme);
-
 bool operator==(filme,filme);
-
 vector<filme> operator-=(vector<filme>, filme);
 
 class Catalogo {
@@ -45,7 +42,7 @@ class Catalogo {
         void readFile();
         void writeFile();
         friend ostream & operator<<(ostream &,const Catalogo &);
-        friend istream & operator>>(istream &, Catalogo &);
+        friend istream & operator>>(istream &, Catalogo );
         friend ostream & operator<<(ostream &, filme &);
 };
 

@@ -1,9 +1,3 @@
-Bianca
-Claudia
-10
-Developer
-Angry
-100
 NovoFilme
 AlgumNome
 6
@@ -15,4 +9,4 @@ Foo
 9.9
 Ziode
 Night
-8
+7
