@@ -41,6 +41,7 @@ main(int argc,char *argv[]){
     // while(option !=8){
         
     // }
+    cin >> cat;
     cat.imprimeCatalogo();
     return OK;
 }

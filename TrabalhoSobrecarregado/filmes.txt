@@ -4,6 +4,9 @@ StudioRandom
 Bianca
 Claudia
 10
+Developer
+Angry
+100
 Shrek
 DreamWorks
 5

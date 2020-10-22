@@ -160,8 +160,16 @@ ostream & operator<<(ostream &out, const Catalogo &c){
     return out;
 }
  
-void Catalogo::operator>>(Catalogo c){
-
+istream & operator>>(istream &in, Catalogo &c){
+    filme temp;
+    cout << endl << "Digite o nome do filme: ";
+    cin >> temp.nomeFilme;
+    cout << endl << "Digite a produtora: ";
+    cin >> temp.nomeProdutora;
+    cout << endl << "Digite a nota; ";
+    cin >> temp.notaFilme;
+    c.insereOrdenada(temp);
+    return in;
 }
 
 void Catalogo::imprimeCatalogo(){

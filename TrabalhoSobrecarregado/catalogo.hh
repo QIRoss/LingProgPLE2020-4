@@ -44,7 +44,7 @@ class Catalogo {
         void readFile();
         void writeFile();
         friend ostream & operator<<(ostream &,const Catalogo &);
-        void operator>>(Catalogo);
+        friend istream & operator>>(istream &, Catalogo &);
 };
 
 
