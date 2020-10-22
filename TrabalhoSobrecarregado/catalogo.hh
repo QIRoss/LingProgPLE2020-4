@@ -36,8 +36,9 @@ class Catalogo {
         bool insereOrdenada(filme);
         bool insereOrdenada(vector<filme>);
         bool removeFilme(filme);
-        filme* buscaFilme(string);
-        filme* editaFilme(filme);
+        filme* operator()(filme);
+        void buscaFilme(Catalogo, filme);
+        void editaFilme(Catalogo, filme);
         void imprimeCatalogo();
         void filmeMelhorAvaliado();
         void setFile(string);

@@ -137,22 +137,6 @@ bool Catalogo::removeFilme(filme toDelete){
         return false;
 }
 
-filme* Catalogo::buscaFilme(string filmeEmBusca){
-    if(false){
-
-    } else {
-        return NULL;
-    }
-}
-
-filme* Catalogo::editaFilme(filme filmeEmEdicao){
-    if(false){
-
-    } else {
-        return NULL;
-    }
-}
-
 ostream & operator<<(ostream &out, filme &c){
     cout
     << "Nome: " << c.nomeFilme << endl
@@ -170,6 +154,43 @@ ostream & operator<<(ostream &out, const Catalogo &c){
         << "Nota: " << c.estrutura[index].notaFilme << endl << endl;
     }
     return out;
+}
+
+filme* Catalogo::operator()(filme search){
+    unsigned index;
+    filme *myPointer;
+    if(estrutura.size() != 0){
+        for(index = 0;index<estrutura.size();index++){
+            if(search == estrutura[index]){
+                myPointer = &estrutura[index];
+                return myPointer;
+            }
+        }
+    } 
+    return NULL;
+}
+
+void Catalogo::buscaFilme(Catalogo cat, filme search){
+    filme thePointer = *cat(search);
+    cout << thePointer;
+}
+
+void Catalogo::editaFilme(Catalogo cat, filme toEdit){
+    char verify;
+    filme changer;
+    cout << "O quer editar?" << endl << "Digite 1 p/ Produtora" << endl << "Digita 2 p/ Nota" << endl;
+    cin >> verify;
+    if(verify == '1'){
+        cout << "Digite a nova produtora: " << endl;
+        cin >> changer.nomeProdutora;
+        cat(toEdit)->nomeProdutora = changer.nomeProdutora;
+    } else if(verify == '2'){
+        cout << "Digite a nova nota: " << endl;
+        cin >> changer.notaFilme;
+        cat(toEdit)->notaFilme = changer.notaFilme;
+    } else {
+        cout << "Nenhuma opção correta, nada foi feito." << endl;
+    }
 }
 
 void Catalogo::imprimeCatalogo(){

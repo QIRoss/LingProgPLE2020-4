@@ -20,6 +20,10 @@ main(int argc,char *argv[]){
     int option = 0;
     unsigned index = 0;
     string any;
+    filme test;
+    test.nomeFilme = "Teste";
+    test.nomeProdutora = "algo";
+    test.notaFilme = 4;
 
     Catalogo cat(argv[1],(unsigned) stoul(argv[2],NULL));
 
@@ -47,11 +51,11 @@ main(int argc,char *argv[]){
                     break;
 
                 case 2:
-
+                    cat.buscaFilme(cat, test);
                     break;
 
                 case 3:
-
+                    cat.editaFilme(cat, test);
                     break;
 
                 case 4:
