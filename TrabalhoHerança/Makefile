@@ -11,6 +11,6 @@ MAINOBJS = agenda.o cadastro.o main.o
 
 main: $(MAINOBJS)
 	$(LD) $(LFLAGS) -o $@ $(MAINOBJS)
-
+ 
 clean:
 	rm -f *.o main a.out
