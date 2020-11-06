@@ -7,14 +7,13 @@
 using namespace std;
 
 #define OK                              0
-#define NUMERO_ARGUMENTOS               3
-
+#define NUMERO_ARGUMENTOS               1
 #define NUMERO_ARGUMENTOS_INVALIDO      1
 
 int
 main(int argc,char *argv[]){
     if (argc != NUMERO_ARGUMENTOS){
-        cout << "Uso "<< argv[0] <<":\t<arquivoBase.txt> <tamanhoMaximo>" << endl;
+        cout << "Uso "<< argv[0] <<":\tEste programa não aceita argumentos." << endl;
         exit (NUMERO_ARGUMENTOS_INVALIDO);
     }
     int option = 0;
@@ -28,11 +27,10 @@ main(int argc,char *argv[]){
         "Digite a opção do menu que deseja:",
         "1 - Inserir paciente.",
         "2 - Buscar um paciente.",
-        "3 - Listar um paciente.",
-        "4 - Listar todos os pacientes",
-        "6 - Sair do Programa."
+        "3 - Listar todos os pacientes",
+        "4 - Sair do Programa."
     };
-    while(option != 6){
+    while(option != 4){
         for(index = 0; index < menu.size() ;index++){
             cout << menu[index] << endl;
         }
@@ -43,27 +41,15 @@ main(int argc,char *argv[]){
             cout << "Você digitou:" << option << endl;
             switch(option){
                 case 1:
-                    cin >> cat;
+                    cout << "Digite o paciente que deseja inserir:" << endl;
                     break;
 
                 case 2:
-                    cout << "Digite o filme que deseja buscar:" << endl;
-                    cin >> temp.nomeFilme;
-                    cat.buscaFilme(cat, temp);
+                    cout << "Digite o Paciente que deseja buscar:" << endl;
+                
                     break;
 
                 case 3:
-                    cout << "Digite o filme que deseja editar:" << endl;
-                    cin >> temp.nomeFilme;
-                    cat.editaFilme(cat, temp);
-                    break;
-
-                case 4:
-                    cat.imprimeCatalogo();
-                    break;
-
-                case 5:
-                    cat.filmeMelhorAvaliado();
                     break;
             }
             cout << "Pressione alguma tecla para continuar: " << endl;
