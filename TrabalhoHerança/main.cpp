@@ -2,8 +2,6 @@
 #include <string>
 #include <vector>
 
-#include "catalogo.hh"
-
 using namespace std;
 
 #define OK                              0
@@ -16,12 +14,9 @@ main(int argc,char *argv[]){
         cout << "Uso "<< argv[0] <<":\tEste programa não aceita argumentos." << endl;
         exit (NUMERO_ARGUMENTOS_INVALIDO);
     }
-    int option = 0;
+    unsigned option = 0;
     unsigned index = 0;
     string any;
-    filme temp;
-
-    Catalogo cat(argv[1],(unsigned) stoul(argv[2],NULL,10));
 
     vector<string> menu = {
         "Digite a opção do menu que deseja:",
@@ -37,7 +32,7 @@ main(int argc,char *argv[]){
         cout << endl;
         cin >> option;
 
-        if (option > 0 && option < 6){
+        if (option > 0 && option < 4){
             cout << "Você digitou:" << option << endl;
             switch(option){
                 case 1:
