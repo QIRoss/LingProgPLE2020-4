@@ -12,13 +12,8 @@ using namespace std;
 
 class Cadastro {
     private:
+    
     public:
-        Cadastro();
-        ~Cadastro();
-        Paciente* & operator+=(const Paciente &);
-        friend ostream & operator<<(ostream &,const Cadastro &);
-        friend ostream & operator<<(ostream &,const Paciente &);
-        Paciente* operator()(Paciente &);
 };
 
 

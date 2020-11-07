@@ -1,6 +1,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
+#include <cstdlib>
+
+#include "paciente.hh"
+#include "pacienteEmergencial.hh"
+#include "cadastro.hh"
+#include "arvore.hh"
 
 using namespace std;
 
