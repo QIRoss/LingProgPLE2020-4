@@ -11,7 +11,7 @@
 template <class T>
 class Arvore{
     struct node{
-        string value;
+        T value;
         node* left;
         node* right;
     };
