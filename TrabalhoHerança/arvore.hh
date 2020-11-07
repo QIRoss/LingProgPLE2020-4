@@ -23,10 +23,16 @@ class Arvore{
         Arvore(){
             this->root = NULL;
         };
+        // CLEAN MEMORY AFTER DESTRUCT 
         ~Arvore(){
-            cleanMemory(this->root);
+            cleanMemory(this->root){
+                if(!node){
+                    deleteTree(node->left);
+                    deleteTree(node->right);
+                    delete node;
+                }
+            }
         };
-        
         // ADD 
         node* operator+=(T input){
             node *current;
@@ -35,8 +41,8 @@ class Arvore{
                 this->root->value = input;
                 this->root->left = NULL;
                 this->root->right = NULL;
-
-                return this.root;
+                current = this.root;
+                return current;
             }
             current = this->root;
             while(current){
@@ -70,8 +76,37 @@ class Arvore{
         // PRINT
         friend ostream & operator<<(ostream &out,const T &);
         // SEARCH 
-        node* operator()(T input);
-    
+        node* operator()(T input){
+            node *myResponse;
+            node current;
+            if(!this->root) return NULL;
+            if(this->root->value == input){
+                myResponse = &(*this->root);
+                return myResponse;
+            }
+            while(current){
+                if(input > current.value){
+                    if(!current->right){
+                        return NULL;
+                    }
+                    current = current->right;
+                } else if(input < current.value){
+                    if(!current->left){
+                        current->left = new node;
+                        current = current->left;
+                        current->value = input;
+                        current->left = NULL;
+                        current->right = NULL;
+                        return current;
+                    }
+                    current = current->left;
+                } else {
+                    // IF current.value == input
+                    return NULL;
+                }
+            }
+            return NULL;
+        }
 };
 
 // template <class T>
