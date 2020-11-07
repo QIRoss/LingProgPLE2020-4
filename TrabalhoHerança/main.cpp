@@ -3,6 +3,8 @@
 #include <vector>
 #include <iomanip>
 #include <cstdlib>
+#include <typeinfo>       
+#include <exception>
 
 #include "paciente.hh"
 #include "pacienteEmergencial.hh"
@@ -13,6 +15,7 @@ using namespace std;
 #define OK                              0
 #define NUMERO_ARGUMENTOS               1
 #define NUMERO_ARGUMENTOS_INVALIDO      1
+
 
 int
 main(int argc,char *argv[]){
@@ -26,6 +29,7 @@ main(int argc,char *argv[]){
     string name;
 
     Arvore<string> cadastro;
+
 
     vector<string> menu = {
         "Digite a opção do menu que deseja:",
@@ -47,13 +51,21 @@ main(int argc,char *argv[]){
                 case 1:
                     cout << "Digite o paciente que deseja inserir:" << endl;
                     cin >> name;
-                    cadastro+=name;
+                    try{
+                        cadastro+=name;
+                    } catch (exception& e){
+                        cerr << "exception caught: " << e.what() << '\n';
+                    }
                     break;
 
                 case 2:
                     cout << "Digite o Paciente que deseja buscar:" << endl;
                     cin >> name;
-                    cout << *(cadastro(name));
+                    try {
+                        cout << *(cadastro(name));
+                    } catch (exception& e){
+                        cerr << "exception caught" << e.what() << '\n';
+                    }
                     break;
 
                 case 3:

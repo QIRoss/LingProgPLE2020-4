@@ -8,7 +8,7 @@
 #ifndef _ARVORE_HH
 #define _ARVORE_HH_         "arvore.hh"
 
-template <T>
+template <class T>
 class Arvore{
     struct node{
         T value;
