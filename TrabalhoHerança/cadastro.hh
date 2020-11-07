@@ -2,7 +2,6 @@
 #include <string>
 #include <iomanip>
 
-#include "catalogo.hh"
 #include "paciente.hh"
 #include "arvore.hh"
 
@@ -13,7 +12,6 @@ using namespace std;
 
 class Cadastro {
     private:
-
     public:
         Cadastro();
         ~Cadastro();

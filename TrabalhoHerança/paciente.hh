@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 
 using namespace std;
@@ -9,6 +8,10 @@ using namespace std;
 class Paciente {
     private:
         string name;
+    public:
+        Paciente(string);
+        ~Paciente();
+        virtual string getName();
 };
 
 #endif
