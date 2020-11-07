@@ -8,9 +8,8 @@
 #ifndef _ARVORE_HH
 #define _ARVORE_HH_         "arvore.hh"
 
-template <class T>
+template <T>
 class Arvore{
-    
     struct node{
         T value;
         node* left;
@@ -19,24 +18,25 @@ class Arvore{
     private:
         node* root;
         // DELETE TREE
-        void cleanMemory(node* node);
-    public:
-        Arvore(){
-            this->root = NULL;
-        };
-        // CLEAN MEMORY AFTER DESTRUCT 
-        ~Arvore(){
-            cleanMemory(this->root){
+        void cleanMemory(node* node){
                 if(!node){
                     deleteTree(node->left);
                     deleteTree(node->right);
                     delete node;
                 }
             }
+    public:
+        Arvore(){
+            this->root = NULL;
+        };
+        // CLEAN MEMORY AFTER DESTRUCT 
+        ~Arvore(){
+            cleanMemory(this->root);
         };
         // ADD A NODE TO THE TREE
         node* operator+=(T input){
             node *current;
+            // EMPTY TREE MEANS INPUT IS THE ROOT 
             if(!this-root){
                 this->root = new node;
                 this->root->value = input;
@@ -47,6 +47,7 @@ class Arvore{
             }
             current = this->root;
             while(current){
+                // GOING TO RIGHT
                 if(input > current.value){
                     if(!current->right){
                         current->right = new node;
@@ -57,7 +58,9 @@ class Arvore{
                         return current;
                     }
                     current = current->right;
-                } else if(input < current.value){
+                } 
+                // GOING TO LEFT 
+                else if(input < current.value){
                     if(!current->left){
                         current->left = new node;
                         current = current->left;
@@ -76,14 +79,17 @@ class Arvore{
         };
         // SINGLE PRINT
         friend ostream & operator<<(ostream &out,const node &toPrint){
+            if(!toPrint){
+                cout << "Nome nao existe" << endl;
+            }
             cout << toPrint.value;
         }
         //BREADTH FIRST SEARCH ALGORITHM TREE PRINT
-        friend ostream & operator<<(ostream &out,const T &toPrint){
+        friend ostream & operator<<(ostream &out, const Arvore &same){
             vector<node> queue;
             vector<node> results;
             unsigned index=0;
-            if(!this->root) return NULL;
+            if(!same->root) return NULL;
             node shifter;
             queue[0] = this.root;
             while(queue.size()){
@@ -98,6 +104,7 @@ class Arvore{
                 }
             }
             for(index=0;index<results.size();index++){
+                // Already overloaded for node.value
                 cout << results[index];
             }
         }

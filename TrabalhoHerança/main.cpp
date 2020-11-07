@@ -6,7 +6,6 @@
 
 #include "paciente.hh"
 #include "pacienteEmergencial.hh"
-#include "cadastro.hh"
 #include "arvore.hh"
 
 using namespace std;
@@ -24,6 +23,9 @@ main(int argc,char *argv[]){
     unsigned option = 0;
     unsigned index = 0;
     string any;
+    string name;
+
+    Arvore<string> cadastro;
 
     vector<string> menu = {
         "Digite a opção do menu que deseja:",
@@ -44,14 +46,18 @@ main(int argc,char *argv[]){
             switch(option){
                 case 1:
                     cout << "Digite o paciente que deseja inserir:" << endl;
+                    cin >> name;
+                    cadastro+=name;
                     break;
 
                 case 2:
                     cout << "Digite o Paciente que deseja buscar:" << endl;
-                
+                    cin >> name;
+                    cout << *(cadastro(name));
                     break;
 
                 case 3:
+                    cout << cadastro;
                     break;
             }
             cout << "Pressione alguma tecla para continuar: " << endl;
