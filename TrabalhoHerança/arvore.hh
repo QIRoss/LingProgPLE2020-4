@@ -11,7 +11,7 @@
 template <class T>
 class Arvore{
     struct node{
-        T value;
+        string value;
         node* left;
         node* right;
     };
@@ -20,8 +20,8 @@ class Arvore{
         // DELETE TREE
         void cleanMemory(node* node){
                 if(!node){
-                    deleteTree(node->left);
-                    deleteTree(node->right);
+                    cleanMemory(node->left);
+                    cleanMemory(node->right);
                     delete node;
                 }
             }
@@ -37,18 +37,18 @@ class Arvore{
         node* operator+=(T input){
             node *current;
             // EMPTY TREE MEANS INPUT IS THE ROOT 
-            if(!this-root){
+            if(!this->root){
                 this->root = new node;
                 this->root->value = input;
                 this->root->left = NULL;
                 this->root->right = NULL;
-                current = this.root;
+                current = this->root;
                 return current;
             }
             current = this->root;
             while(current){
                 // GOING TO RIGHT
-                if(input > current.value){
+                if(input > current->value){
                     if(!current->right){
                         current->right = new node;
                         current = current->right;
@@ -60,7 +60,7 @@ class Arvore{
                     current = current->right;
                 } 
                 // GOING TO LEFT 
-                else if(input < current.value){
+                else if(input < current->value){
                     if(!current->left){
                         current->left = new node;
                         current = current->left;
@@ -79,19 +79,17 @@ class Arvore{
         };
         // SINGLE PRINT
         friend ostream & operator<<(ostream &out,const node &toPrint){
-            if(!toPrint){
-                cout << "Nome nao existe" << endl;
-            }
             cout << toPrint.value;
+            return out;
         }
         //BREADTH FIRST SEARCH ALGORITHM TREE PRINT
         friend ostream & operator<<(ostream &out, const Arvore &same){
             vector<node> queue;
             vector<node> results;
             unsigned index=0;
-            if(!same->root) return NULL;
             node shifter;
-            queue[0] = this.root;
+            if(same->root == NULL) return out;
+            queue[0] = same->root;
             while(queue.size()){
                 shifter = queue[0];
                 queue.erase(queue.begin());
@@ -113,16 +111,16 @@ class Arvore{
             node *current;
             if(!this->root) return NULL;
             if(this->root->value == input){
-                current = this.root;
+                current = this->root;
                 return current;
             }
             while(current){
-                if(input > current.value){
+                if(input > current->value){
                     if(!current->right){
                         return NULL;
                     }
                     current = current->right;
-                } else if(input < current.value){
+                } else if(input < current->value){
                     if(!current->left){
                         return NULL;
                     }

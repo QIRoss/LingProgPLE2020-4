@@ -4,10 +4,6 @@
 
 using namespace std;
 
-// PacienteDerivado::PacienteDerivado(string nameIn){
-//     name = nameIn;
-// }
-
 PacienteDerivado::~PacienteDerivado(){};
 
 string PacienteDerivado::getName(){

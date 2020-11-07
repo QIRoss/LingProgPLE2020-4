@@ -30,7 +30,6 @@ main(int argc,char *argv[]){
 
     Arvore<string> cadastro;
 
-
     vector<string> menu = {
         "Digite a opção do menu que deseja:",
         "1 - Inserir paciente.",
