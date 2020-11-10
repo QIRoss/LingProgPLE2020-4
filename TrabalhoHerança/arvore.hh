@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <vector>
+#include <deque>
 #include <iomanip>
 #include <cstdlib>
 #include <exception>
@@ -36,20 +36,19 @@ class Arvore{
         // ADD A NODE TO THE TREE
         node* operator+=(T input){
             node *current;
-            // EMPTY TREE MEANS INPUT IS THE ROOT 
-            if(!this->root){
+            // EMPTY TREE MEANS INPUT IS THE ROOT
+            if(this->root == NULL){
                 this->root = new node;
                 this->root->value = input;
                 this->root->left = NULL;
                 this->root->right = NULL;
-                current = this->root;
                 return current;
             }
             current = this->root;
             while(current){
                 // GOING TO RIGHT
                 if(input > current->value){
-                    if(!current->right){
+                    if(current->right == NULL){
                         current->right = new node;
                         current = current->right;
                         current->value = input;
@@ -61,7 +60,7 @@ class Arvore{
                 } 
                 // GOING TO LEFT 
                 else if(input < current->value){
-                    if(!current->left){
+                    if(current->left == NULL){
                         current->left = new node;
                         current = current->left;
                         current->value = input;
@@ -84,50 +83,50 @@ class Arvore{
         }
          //BREADTH FIRST SEARCH ALGORITHM TREE PRINT
         friend ostream & operator<<(ostream & out, Arvore &same){
-            vector<node*> queue;
-            vector<node*> results;
+            deque<node*> temp;
+            deque<node*> results;
             unsigned index=0;
             node *shifter;
             if(same.root == NULL) {
                 cout << "Empty tree" << endl;
                 return out;
             }
-            queue[0] = same.root;
-            while(queue.size()){
-                shifter = queue[0];
-                queue.erase(queue.begin());
+            temp.push_back(same.root);
+            while(temp.size() != 0){
+                shifter = temp.front();
+                temp.pop_front();
                 results.push_back(shifter);
                 if(shifter->left){
-                    queue.push_back(shifter->left);
+                    temp.push_back(shifter->left);
                 }
                 if(shifter->right){
-                    queue.push_back(shifter->right);
+                    temp.push_back(shifter->right);
                 }
             }
-            cout << "ARRIVED" << endl;
             //STARTING TO PRINT THE VECTOR IN LEVEL ORDER
             for(index=0;index<results.size();index++){
                 // Already overloaded for node.value
-                cout << results[index] << endl;
+                cout << *results[index] << endl;
             }
             return out;
         }
         // SEARCH 
         node* operator()(T input){
             node *current;
-            if(!this->root) return NULL;
+            if(this->root == NULL) return NULL;
             if(this->root->value == input){
                 current = this->root;
                 return current;
             }
-            while(current){
+            current = this->root;
+            while(current != NULL){
                 if(input > current->value){
-                    if(!current->right){
+                    if(current->right == NULL){
                         return NULL;
                     }
                     current = current->right;
                 } else if(input < current->value){
-                    if(!current->left){
+                    if(current->left == NULL){
                         return NULL;
                     }
                     current = current->left;
