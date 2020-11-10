@@ -79,16 +79,16 @@ class Arvore{
         };
         // SINGLE PRINT
         friend ostream & operator<<(ostream &out,const node &toPrint){
-            cout << toPrint.value;
+            cout << toPrint.value << endl;
             return out;
         }
         //BREADTH FIRST SEARCH ALGORITHM TREE PRINT
-        friend ostream & operator<<(ostream &out, const Arvore &same){
+        friend ostream & operator<<(ostream & out, Arvore & same){
             vector<node> queue;
             vector<node> results;
             unsigned index=0;
             node shifter;
-            if(same->root == NULL) return out;
+            if(same.root == NULL) return out;
             queue[0] = same->root;
             while(queue.size()){
                 shifter = queue[0];
@@ -101,10 +101,12 @@ class Arvore{
                     queue.push_back(shifter->right);
                 }
             }
+            //STARTING TO PRINT THE VECTOR
             for(index=0;index<results.size();index++){
                 // Already overloaded for node.value
-                cout << results[index];
+                cout << results[index] << endl;
             }
+            return out;
         }
         // SEARCH 
         node* operator()(T input){

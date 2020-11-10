@@ -68,7 +68,7 @@ main(int argc,char *argv[]){
                     break;
 
                 case 3:
-                    cout << cadastro;
+                    // cout << cadastro;
                     break;
             }
             cout << "Pressione alguma tecla para continuar: " << endl;
