@@ -52,7 +52,7 @@ main(int argc,char *argv[]){
                     cin >> name;
                     try{
                         cadastro+=name;
-                    } catch (exception& e){
+                    } catch (exception &e){
                         cerr << "exception caught: " << e.what() << '\n';
                     }
                     break;
@@ -62,13 +62,13 @@ main(int argc,char *argv[]){
                     cin >> name;
                     try {
                         cout << *(cadastro(name));
-                    } catch (exception& e){
+                    } catch (exception &e){
                         cerr << "exception caught" << e.what() << '\n';
                     }
                     break;
 
                 case 3:
-                    // cout << cadastro;
+                    cout << cadastro;
                     break;
             }
             cout << "Pressione alguma tecla para continuar: " << endl;

@@ -1,9 +1,9 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 #include <iomanip>
 #include <cstdlib>
+#include <exception>
 
 #ifndef _ARVORE_HH
 #define _ARVORE_HH_         "arvore.hh"
@@ -82,14 +82,17 @@ class Arvore{
             cout << toPrint.value << endl;
             return out;
         }
-        //BREADTH FIRST SEARCH ALGORITHM TREE PRINT
-        friend ostream & operator<<(ostream & out, Arvore & same){
-            vector<node> queue;
-            vector<node> results;
+         //BREADTH FIRST SEARCH ALGORITHM TREE PRINT
+        friend ostream & operator<<(ostream & out, Arvore &same){
+            vector<node*> queue;
+            vector<node*> results;
             unsigned index=0;
-            node shifter;
-            if(same.root == NULL) return out;
-            queue[0] = same->root;
+            node *shifter;
+            if(same.root == NULL) {
+                cout << "Empty tree" << endl;
+                return out;
+            }
+            queue[0] = same.root;
             while(queue.size()){
                 shifter = queue[0];
                 queue.erase(queue.begin());
@@ -101,7 +104,8 @@ class Arvore{
                     queue.push_back(shifter->right);
                 }
             }
-            //STARTING TO PRINT THE VECTOR
+            cout << "ARRIVED" << endl;
+            //STARTING TO PRINT THE VECTOR IN LEVEL ORDER
             for(index=0;index<results.size();index++){
                 // Already overloaded for node.value
                 cout << results[index] << endl;
