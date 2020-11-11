@@ -11,6 +11,8 @@ MAINOBJS = main.o
 
 main: $(MAINOBJS)
 	$(LD) $(LFLAGS) -o $@ $(MAINOBJS)
+	sudo cp $@ /usr/lib/cgi-bin/$@
 
 clean:
 	rm -f *.o main a.out
+	sudo rm /usr/lib/cgi-bin/*  -f
