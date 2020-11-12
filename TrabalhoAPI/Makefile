@@ -15,11 +15,11 @@ ALL = main.cgi\
 
 all: $(ALL)
 
-main.cgi: $(MAINOBJS)
+main: $(MAINOBJS)
 	$(LD) $(LFLAGS) -o $@ $(MAINOBJS)
 	sudo cp $@ /usr/lib/cgi-bin/$@
 
-results.cgi: $(RESULTSOBJS)
+results: $(RESULTSOBJS)
 	$(LD) $(LFLAGS) -o $@ $(RESULTSOBJS)
 	sudo cp $@ /usr/lib/cgi-bin/$@
 
