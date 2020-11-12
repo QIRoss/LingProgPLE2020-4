@@ -24,7 +24,7 @@ void templateEngine::generateTopHTML(){
     << "		    <header id=\"navHeader\">\n"
     << "                <img id=\"logo\" src=\"https://qiross-portfolio-webpage.vercel.app/qiross.png\" alt=\"QIRoss\">\n"
     << "                <h1 id=\"headerTitle\">API PostgreSQL em CGI C++ Chromium</h1>\n"
-    << "                <a href=\"/main\">Back to Main Page</a>\n"
+    << "                <a href=\"/cgi-bin/main\">Back to Main Page</a>\n"
     << "		    </header>\n";
 }
 
@@ -46,7 +46,7 @@ void templateEngine::generateBottomHTML(){
 
 void templateEngine::generatePreviewImgForm(){
     cout 
-    << "        <form action=\"results.cgi\" method=\"GET\">\n"
+    << "        <form action=\"imgPreview\" method=\"GET\">\n"
     << "            <label for=\"toSearch\">Digite a imagem que deseja capturar(preview):</label><br>\n"
     << "            <input type=\"text\" id=\"toSearch\" name=\"toSearch\" required><br><br>\n"
     << "            <input type=\"submit\" value=\"Buscar\">\n"

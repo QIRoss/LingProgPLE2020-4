@@ -4,11 +4,11 @@ LD = g++
 CFLAGS = -Wall -std=c++11
 LFLAGS = -Wall -std=c++11
 
-MAINOBJS = main.o
-RESULTSOBJS = results.o
+MAINOBJS = templateEngine.o main.o
+IMGPREVIEWOBJS = templateEngine.o imgPreview.o
 
-ALL = main.cgi\
-	results.cgi
+ALL = main\
+	imgPreview\
 
 .c.o:
 	$(CC) $(CFLAGS) -c $<
@@ -19,10 +19,10 @@ main: $(MAINOBJS)
 	$(LD) $(LFLAGS) -o $@ $(MAINOBJS)
 	sudo cp $@ /usr/lib/cgi-bin/$@
 
-results: $(RESULTSOBJS)
-	$(LD) $(LFLAGS) -o $@ $(RESULTSOBJS)
+imgPreview: $(IMGPREVIEWOBJS)
+	$(LD) $(LFLAGS) -o $@ $(IMGPREVIEWOBJS)
 	sudo cp $@ /usr/lib/cgi-bin/$@
 
 clean:
-	rm -f *.o *.cgi a.out
+	rm -f *.o *.cgi a.out $(ALL)
 	sudo rm /usr/lib/cgi-bin/*  -f
