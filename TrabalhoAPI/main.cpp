@@ -22,8 +22,8 @@ int main(int argc, char *argv[]){
     << "		</header>\n"
 
     << "        <form action=\"results.cgi\" method=\"GET\">"
-    << "            <label for=\"name\">Digite uma pagina que deseja capturar:</label>"
-    << "            <input type=\"text\" id=\"name\" name=\"name\" required><br><br>"
+    << "            <label for=\"toSearch\">Digite uma pagina que deseja capturar:</label>"
+    << "            <input type=\"text\" id=\"toSearch\" name=\"toSearch\" required><br><br>"
     << "            <input type=\"submit\" value=\"Submit\">"
     << "        </form>"
 

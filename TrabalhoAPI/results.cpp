@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 int main(int argc, char *argv[]){
     cout << "Content-type: text/html\n\n"
     << "<!DOCTYPE html>\n"
@@ -17,10 +18,10 @@ int main(int argc, char *argv[]){
     << "	<body align=\"center\">\n"
     << "			<h1>Resultados</h1>\n"
     << "        <script>\n"
-    << "            console.log(\"help\");\n"
-    << "            const something = new URLSearchParams;\n"
-    << "            const resultsList = document.getElementById('results.cgi');\n"
-    << "            resultsList.append(name);\n"
+    << "            const queryString = window.location.search;\n"
+    << "            const urlParams = new URLSearchParams(queryString);\n"
+    << "            console.log(urlParams);\n"
+    << "            console.log(resultsList);\n"
     << "        </script>\n"
     << "	</body>\n"
     << "</html>\n" ;
