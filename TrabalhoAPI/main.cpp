@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
     << "		</header>\n"
 
     << "        <form action=\"results.cgi\" method=\"GET\">"
-    << "            <label for=\"toSearch\">Digite uma pagina que deseja capturar:</label>"
+    << "            <label for=\"toSearch\">Digite a imagem que deseja capturar:</label>"
     << "            <input type=\"text\" id=\"toSearch\" name=\"toSearch\" required><br><br>"
     << "            <input type=\"submit\" value=\"Submit\">"
     << "        </form>"
