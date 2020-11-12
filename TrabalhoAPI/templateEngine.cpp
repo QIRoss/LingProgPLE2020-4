@@ -9,7 +9,7 @@ void templateEngine::generateTopHTML(){
     << "<html>\n"
     << "	<head>\n"
     << "		<title>\n"
-    << "			Main Page\n"
+    << "			Lucas de Queiroz dos Reis API Postgres Interface Web\n"
     << "		</title>\n"
     << "	</head>\n"
     << "    <style>"
@@ -37,7 +37,7 @@ void templateEngine::generateBottomHTML(){
     << "        </section>\n"
 
     << "        <footer>\n"
-    << "            <p id=\"copyright\"><small>Copyright©</small>2020 QIRoss .all rights reserved</p>"
+    << "            <p id=\"copyright\"><small>Copyright©</small>2020 QIRoss .all rights reserved</p>\n"
     << "        </footer>\n"
 
     << "	</body>\n"
@@ -47,27 +47,28 @@ void templateEngine::generateBottomHTML(){
 void templateEngine::generatePreviewImgForm(){
     cout 
     << "        <form action=\"imgPreview\" method=\"GET\">\n"
-    << "            <label for=\"toSearch\">Digite a imagem que deseja capturar(preview):</label><br>\n"
-    << "            <input type=\"text\" id=\"toSearch\" name=\"toSearch\" required><br><br>\n"
+    << "            <label for=\"toSearch\">Digite a url da imagem que deseja capturar(preview):</label><br>\n"
+    << "            <input type=\"text\" id=\"toSearch\" name=\"toSearch\" placeholder=\"url\" required><br><br>\n"
     << "            <input type=\"submit\" value=\"Buscar\">\n"
     << "        </form>\n";
 }
 
 void templateEngine::generateReadDbForm(){
     cout
-    << "        <form action=\"readPostgres\" method=\"GET\">\n"
-    << "            <label for=\"toRead\">Digite a imagem que deseja LER do banco:</label><br>\n"
-    << "            <input type=\"text\" id=\"toRead\" name=\"toRead\"><br><br>\n"
+    << "        <form action=\"readDb\" method=\"GET\">\n"
+    << "            <label for=\"toRead\">Digite o titulo da imagem que deseja LER do banco:</label><br>\n"
+    << "            <input type=\"text\" id=\"toRead\" name=\"toRead\" placeholder=\"titulo da imagem\"required><br><br>\n"
     << "            <input type=\"submit\" value=\"Buscar\">\n"
     << "        </form>\n";
 }
 
 void templateEngine::generateWriteDbForm(){
     cout
-    << "        <form action=\"writePostgres\" method=\"POST\">\n"
-    << "            <label for=\"toWrite\">Digite a URL que deseja ESCREVER no banco:</label><br>\n"
-    << "            <input type=\"text\" id=\"toWrite\" name=\"toWrite\"><br><br>\n"
-    << "            <input type=\"submit\" value=\"Buscar\">\n"
+    << "        <form action=\"writeDb\" method=\"GET\">\n"
+    << "            <label for=\"toWriteTitle\">Digite o Titulo a URL que deseja ESCREVER no banco:</label><br><br>\n"
+    << "            <input type=\"text\" id=\"toWriteTitle\" name=\"toWriteTitle\" placeholder=\"insira o titulo aqui\" required><br><br>\n"
+    << "            <input type=\"text\" id=\"toWriteTitle\" name=\"toWriteTitle\" placeholder=\"insira a url aqui\" required><br><br>\n"
+    << "            <input type=\"submit\" value=\"Salvar\">\n"
     << "        </form>\n";
 }
 
@@ -75,10 +76,10 @@ void templateEngine::generateInnerImgPreviewPage(){
     cout
     << "			<h1>Resultados</h1>\n"
     << "            <img src=\" \" id=\"image\"/>\n"
-    << "            <form>\n"
-    << "                <label for=\"toSave\">Digite um titulo para imagem:</label><br>"
-    << "                <input type=\"text\" id=\"toSave\" name=\"toSave\" required><br><br>"
-    << "                <input type=\"submit\" value=\"Salvar\">"
+    << "            <form action=\"writeDb\" method=\"GET\">\n"
+    << "                <label for=\"toWriteTitle\">Digite um titulo para imagem:</label><br>\n"
+    << "                <input type=\"text\" id=\"toWriteTitle\" name=\"toWriteTitle\" required><br><br>\n"
+    << "                <input type=\"submit\" value=\"Salvar\">\n"
     << "            </form>\n"
     << "        <script>\n"
     << "            const url = new URLSearchParams(window.location.search).get('toSearch')\n"
