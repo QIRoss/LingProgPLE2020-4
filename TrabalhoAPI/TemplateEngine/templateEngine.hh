@@ -13,14 +13,9 @@ class templateEngine {
         void generateAllForms();
         void generateInnerImgPreviewPage();
 
-        void readDB();
-        void writeDB();
-
     public:
         void generateMainPage();
         void generateImgPreviewPage();
-        void generateReadDbPage();
-        void generateWriteDbPage();
 };
 
 #endif

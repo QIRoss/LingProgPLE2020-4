@@ -12,10 +12,7 @@ TESTOBJS = api.o
 
 ALL = main\
 	imgPreview\
-	readDb\
-	writeDb\
-	test\
-
+	
 .c.o:
 	$(CC) $(CFLAGS) -c $<
 
@@ -27,14 +24,6 @@ main: $(MAINOBJS)
 
 imgPreview: $(IMGPREVIEWOBJS)
 	$(LD) $(LFLAGS) -o $@ $(IMGPREVIEWOBJS)
-	sudo cp $@ /usr/lib/cgi-bin/$@
-
-readDb: $(READDBOBJS)
-	$(LD) $(LFLAGS) -o $@ $(READDBOBJS)
-	sudo cp $@ /usr/lib/cgi-bin/$@
-
-writeDb: $(WRITEDBOBJS)
-	$(LD) $(LFLAGS) -o $@ $(WRITEDBOBJS)
 	sudo cp $@ /usr/lib/cgi-bin/$@
 
 

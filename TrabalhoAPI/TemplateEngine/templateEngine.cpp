@@ -132,15 +132,3 @@ void templateEngine::generateImgPreviewPage(){
     generateInnerImgPreviewPage();
     generateBottomHTML();
 }
-
-void templateEngine::generateReadDbPage(){
-    generateTopHTML();
-    
-    generateBottomHTML();
-}
-
-void templateEngine::generateWriteDbPage(){
-    generateTopHTML();
-    
-    generateBottomHTML();
-}
