@@ -8,11 +8,13 @@ MAINOBJS = templateEngine.o main.o
 IMGPREVIEWOBJS = templateEngine.o imgPreview.o
 READDBOBJS = templateEngine.o readDb.o
 WRITEDBOBJS = templateEngine.o writeDb.o
+TESTOBJS = api.o
 
 ALL = main\
 	imgPreview\
 	readDb\
 	writeDb\
+	test\
 
 .c.o:
 	$(CC) $(CFLAGS) -c $<

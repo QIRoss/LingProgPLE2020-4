@@ -9,7 +9,7 @@ void templateEngine::generateTopHTML(){
     << "<html>\n"
     << "	<head>\n"
     << "		<title>\n"
-    << "			Lucas de Queiroz dos Reis API Postgres Interface Web\n"
+    << "			Lucas de Queiroz dos Reis API Javascript\n"
     << "		</title>\n"
     << "	</head>\n"
     << "    <style>"
@@ -23,7 +23,7 @@ void templateEngine::generateTopHTML(){
     << "	<body align=\"center\">\n"
     << "		    <header id=\"navHeader\">\n"
     << "                <img id=\"logo\" src=\"https://qiross-portfolio-webpage.vercel.app/qiross.png\" alt=\"QIRoss\">\n"
-    << "                <h1 id=\"headerTitle\">API PostgreSQL em CGI C++ Chromium</h1>\n"
+    << "                <h1 id=\"headerTitle\">API Javascript na CGI C++ Chromium/h1>\n"
     << "                <a href=\"/cgi-bin/main\">Back to Main Page</a>\n"
     << "		    </header>\n";
 }
@@ -37,8 +37,12 @@ void templateEngine::generateBottomHTML(){
     << "        </section>\n"
 
     << "        <footer>\n"
-    << "            <p id=\"copyright\"><small>Copyright©</small>2020 QIRoss .all rights reserved</p>\n"
+    << "            <p id=\"copyright\"><small>Copyright©</small><span id=\"year\"></span> QIRoss .all rights reserved</p>\n"
     << "        </footer>\n"
+
+    << "        <script>\n"
+    << "            document.getElementById(\"year\").innerHTML = new Date().getFullYear();\n"
+    << "        </script>\n"
 
     << "	</body>\n"
     << "</html>\n" ;
@@ -76,10 +80,10 @@ void templateEngine::generateInnerImgPreviewPage(){
     cout
     << "			<h1>Resultados</h1>\n"
     << "            <img src=\" \" id=\"image\"/>\n"
-    << "            <form action=\"writeDb\" method=\"GET\">\n"
+    << "            <form id=\"form\">\n"
     << "                <label for=\"toWriteTitle\">Digite um titulo para imagem:</label><br>\n"
     << "                <input type=\"text\" id=\"toWriteTitle\" name=\"toWriteTitle\" required><br><br>\n"
-    << "                <input type=\"submit\" value=\"Salvar\">\n"
+    << "                <input id=\"button\"type=\"submit\" value=\"Envie para o admin\">\n"
     << "            </form>\n"
     << "        <script>\n"
     << "            const url = new URLSearchParams(window.location.search).get('toSearch')\n"
@@ -90,6 +94,24 @@ void templateEngine::generateInnerImgPreviewPage(){
     << "                .then(blob => {\n"
     << "                    document.getElementById('image').src = URL.createObjectURL(blob);\n"
     << "                }); \n"
+    << "        </script>\n"
+    << "        <script>\n"
+    << "            const btn = document.getElementById('button');"
+    << "            document.getElementById('form')"
+    << "            .addEventListener('submit', function(event) {"
+    << "            event.preventDefault();"
+    << "            btn.value = 'Sending...';"
+    << "            const serviceID = 'default_service';"
+    << "            const templateID = 'template_HtIWhoRJ';"
+    << "            emailjs.sendForm(serviceID, templateID, this)"
+    << "                .then(() => {"
+    << "                btn.value = 'Send Email';"
+    << "                alert('Sent!');"
+    << "                }, (err) => {"
+    << "                btn.value = 'Send Email';"
+    << "                alert(JSON.stringify(err));"
+    << "                });"
+    << "            });"
     << "        </script>\n";
 }
 
