@@ -23,7 +23,7 @@ void templateEngine::generateTopHTML(){
     << "	<body align=\"center\">\n"
     << "		    <header id=\"navHeader\">\n"
     << "                <img id=\"logo\" src=\"https://qiross-portfolio-webpage.vercel.app/qiross.png\" alt=\"QIRoss\">\n"
-    << "                <h1 id=\"headerTitle\">API Javascript na CGI C++ Chromium/h1>\n"
+    << "                <h1 id=\"headerTitle\">API Javascript na CGI C++ Chromium</h1>\n"
     << "                <a href=\"/cgi-bin/main\">Back to Main Page</a>\n"
     << "		    </header>\n";
 }
