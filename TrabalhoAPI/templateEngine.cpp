@@ -1,7 +1,15 @@
 #include <iostream>
+
 #include "templateEngine.hh"
+#include "database.hh"
+
+#include <cgicc/CgiDefs.h> 
+#include <cgicc/Cgicc.h> 
+#include <cgicc/HTTPHTMLHeader.h> 
+#include <cgicc/HTMLClasses.h>  
 
 using namespace std;
+using namespace cgicc;
 
 void templateEngine::generateTopHTML(){
     cout << "Content-type: text/html\n\n"
@@ -71,7 +79,7 @@ void templateEngine::generateWriteDbForm(){
     << "        <form action=\"writeDb\" method=\"GET\">\n"
     << "            <label for=\"toWriteTitle\">Digite o Titulo a URL que deseja ESCREVER no banco:</label><br><br>\n"
     << "            <input type=\"text\" id=\"toWriteTitle\" name=\"toWriteTitle\" placeholder=\"insira o titulo aqui\" required><br><br>\n"
-    << "            <input type=\"text\" id=\"toWriteTitle\" name=\"toWriteTitle\" placeholder=\"insira a url aqui\" required><br><br>\n"
+    << "            <input type=\"text\" id=\"toWriteUrl\" name=\"toWriteUrl\" placeholder=\"insira a url aqui\" required><br><br>\n"
     << "            <input type=\"submit\" value=\"Salvar\">\n"
     << "        </form>\n";
 }
@@ -95,6 +103,7 @@ void templateEngine::generateInnerImgPreviewPage(){
     << "                    document.getElementById('image').src = URL.createObjectURL(blob);\n"
     << "                }); \n"
     << "        </script>\n"
+    // EMAIL SCRIPT
     << "        <script>\n"
     << "            const btn = document.getElementById('button');"
     << "            document.getElementById('form')"
@@ -113,6 +122,57 @@ void templateEngine::generateInnerImgPreviewPage(){
     << "                });"
     << "            });"
     << "        </script>\n";
+}
+
+void templateEngine::writeDb(){
+    Cgicc formData;
+    Database database;
+    string title,url;
+
+    form_iterator fi = formData.getElement("toWriteTitle");  
+    if( !fi->isEmpty() && fi != (*formData).end()) { 
+        title = **fi;
+        cout << "<h3>Title: " << **fi << "</h3>" << endl;  
+    } else {
+        cout << "<h3>No text entered for title</h3>" << endl;  
+    }
+   cout << "<br/>\n";
+   
+   fi = formData.getElement("toWriteUrl");  
+   if( !fi->isEmpty() &&fi != (*formData).end()) {  
+        url = **fi;
+        cout << "<h3>Url: " << **fi << "</h3>" << endl;  
+   } else {
+      cout << "<h3>No text entered for url</h3>" << endl;  
+   }
+   cout << "<br/>\n";
+
+   if(database.writeData(title,url)){
+       cout << "<h3> Escrito no banco de dados com sucesso!</h3>\n";
+   } else {
+       cout << "<h3> Falha ao escrever no banco</h3>\n";
+   }
+}
+
+void templateEngine::readDb(){
+    Cgicc formData;
+
+    form_iterator fi = formData.getElement("toWriteTitle");  
+    if( !fi->isEmpty() && fi != (*formData).end()) {  
+        cout << "<h3>Title " << **fi << "</h3>" << endl;  
+    } else {
+        cout << "<h3>No text entered for title</h3>" << endl;  
+    }
+   
+   cout << "<br/>\n";
+   fi = formData.getElement("toWriteUrl");  
+   if( !fi->isEmpty() &&fi != (*formData).end()) {  
+      cout << "<h3>Url: " << **fi << "</h3>" << endl;  
+   } else {
+      cout << "<h3>No text entered for url</h3>" << endl;  
+   }
+   
+   cout << "<br/>\n";
 }
 
 void templateEngine::generateAllForms(){
@@ -141,6 +201,6 @@ void templateEngine::generateReadDbPage(){
 }
 void templateEngine::generateWriteDbPage(){
     generateTopHTML();
-    
+    writeDb();
     generateBottomHTML();
 }

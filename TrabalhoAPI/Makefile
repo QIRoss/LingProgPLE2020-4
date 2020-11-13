@@ -4,17 +4,13 @@ LD = g++
 CFLAGS = -Wall -std=c++11
 LFLAGS = -Wall -std=c++11
 
-MAINOBJS = templateEngine.o main.o
-IMGPREVIEWOBJS = templateEngine.o imgPreview.o
-READDBOBJS = templateEngine.o readDb.o
-WRITEDBOBJS = templateEngine.o writeDb.o
-DATABASEOBJS = database.o
-CGIOBJS = cgi.o
+MAINOBJS = templateEngine.o main.o database.o
+IMGPREVIEWOBJS = templateEngine.o imgPreview.o database.o
+READDBOBJS = templateEngine.o readDb.o database.o
+WRITEDBOBJS = templateEngine.o writeDb.o database.o
 
 ALL = main\
 	imgPreview\
-	database\
-	cgi\
 	readDb\
 	writeDb\
 	
@@ -24,28 +20,20 @@ ALL = main\
 all: $(ALL)
 
 main: $(MAINOBJS)
-	$(LD) $(LFLAGS) -o $@ $(MAINOBJS)
+	$(LD) $(LFLAGS) -o $@ $(MAINOBJS) -lcgicc -lpqxx -lpq
 	sudo cp $@ /usr/lib/cgi-bin/$@
 
 imgPreview: $(IMGPREVIEWOBJS)
-	$(LD) $(LFLAGS) -o $@ $(IMGPREVIEWOBJS)
+	$(LD) $(LFLAGS) -o $@ $(IMGPREVIEWOBJS) -lcgicc -lpqxx -lpq
 	sudo cp $@ /usr/lib/cgi-bin/$@
 
 readDb: $(READDBOBJS)
-	$(LD) $(LFLAGS) -o $@ $(READDBOBJS)
+	$(LD) $(LFLAGS) -o $@ $(READDBOBJS) -lcgicc -lpqxx -lpq
 	sudo cp $@ /usr/lib/cgi-bin/$@
 
 writeDb: $(WRITEDBOBJS)
-	$(LD) $(LFLAGS) -o $@ $(WRITEDBOBJS)
+	$(LD) $(LFLAGS) -o $@ $(WRITEDBOBJS) -lcgicc -lpqxx -lpq
 	sudo cp $@ /usr/lib/cgi-bin/$@
-
-
-cgi: $(CGIOBJS)
-	$(LD) $(LFLAGS) -o $@ $(CGIOBJS) -lcgicc
-	sudo cp $@ /usr/lib/cgi-bin/$@
-
-database: $(DATABASEOBJS)
-	$(LD) $(LFLAGS) -o $@ $(DATABASEOBJS) -lpqxx -lpq
 
 
 clean:
