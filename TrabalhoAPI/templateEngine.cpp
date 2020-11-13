@@ -21,7 +21,7 @@ void templateEngine::generateTopHTML(){
     << "<html>\n"
     << "	<head>\n"
     << "		<title>\n"
-    << "			Lucas de Queiroz dos Reis API Javascript\n"
+    << "			Lucas de Queiroz dos Reis API Postgres\n"
     << "		</title>\n"
     << "	</head>\n"
     << "    <style>"
@@ -35,7 +35,7 @@ void templateEngine::generateTopHTML(){
     << "	<body align=\"center\">\n"
     << "		    <header id=\"navHeader\">\n"
     << "                <img id=\"logo\" src=\"https://qiross-portfolio-webpage.vercel.app/qiross.png\" alt=\"QIRoss\">\n"
-    << "                <h1 id=\"headerTitle\">API Javascript na CGI C++ Chromium</h1>\n"
+    << "                <h1 id=\"headerTitle\">API Postgres e CGIs gerenciado por C++</h1>\n"
     << "                <a href=\"/cgi-bin/main\">Back to Main Page</a>\n"
     << "		    </header>\n";
 }
@@ -146,6 +146,7 @@ void templateEngine::writeDb(){
    if( !fi->isEmpty() &&fi != (*formData).end()) {  
         url = **fi;
         cout << "<h3>Url: " << **fi << "</h3>" << endl;  
+        cout << "<img src=\"" << url << "\" id=\"image\"/>\n" << endl;
    } else {
       cout << "<h3>No text entered for url</h3>" << endl;  
    }
