@@ -17,7 +17,7 @@ class templateEngine {
         void readDb();
 
         void generateAllForms();
-        
+
         void generateInnerImgPreviewPage();
 
     public:

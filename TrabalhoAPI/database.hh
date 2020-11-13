@@ -1,5 +1,6 @@
 #include <iostream>
 #include <pqxx/pqxx> 
+#include <string>
 
 #include <vector>
 
@@ -9,7 +10,7 @@ using namespace pqxx;
 class Database {
     public:
         Database();
-        vector<string> searchData();
         bool writeData(string, string);
+        result query(string);
     private:
 };

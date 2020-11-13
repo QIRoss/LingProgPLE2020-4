@@ -1,6 +1,7 @@
 #include <iostream>
 #include <pqxx/pqxx>
 #include <vector>
+#include <string>
 
 #include "database.hh"
 
@@ -37,6 +38,11 @@ bool Database::writeData(string title, string url){
    return false;
 }
 
-vector<string> Database::searchData(){
-   
+result Database::query(string title){
+  connection c{"dbname = lingprog user = postgres password = abcd \
+      hostaddr = 127.0.0.1 port = 5432"};
+  work transaction{c};
+  result r{transaction.exec("SELECT url FROM memes WHERE title = '" + title +  "';")};
+  transaction.commit();
+  return r;
 }

@@ -1,4 +1,8 @@
 #include <iostream>
+#include <vector>
+#include <string>
+
+#include <pqxx/pqxx>
 
 #include "templateEngine.hh"
 #include "database.hh"
@@ -156,23 +160,22 @@ void templateEngine::writeDb(){
 
 void templateEngine::readDb(){
     Cgicc formData;
-
-    form_iterator fi = formData.getElement("toWriteTitle");  
+    Database database;
+    string title;
+    result list;
+    form_iterator fi = formData.getElement("toRead");  
     if( !fi->isEmpty() && fi != (*formData).end()) {  
+        title = **fi;
         cout << "<h3>Title " << **fi << "</h3>" << endl;  
     } else {
         cout << "<h3>No text entered for title</h3>" << endl;  
     }
-   
-   cout << "<br/>\n";
-   fi = formData.getElement("toWriteUrl");  
-   if( !fi->isEmpty() &&fi != (*formData).end()) {  
-      cout << "<h3>Url: " << **fi << "</h3>" << endl;  
-   } else {
-      cout << "<h3>No text entered for url</h3>" << endl;  
-   }
-   
-   cout << "<br/>\n";
+    cout << "<br/>\n";
+    list = database.query(title);
+    for (auto row: list){
+        cout << "<h3><a href=\""<< row["url"] << "\" target=\"_blank\">" << row["url"] << "</a></h3></br>" << endl;
+        cout << "<img src=\"" << row["url"] << "\" id=\"image\"/>\n" << endl;
+    }
 }
 
 void templateEngine::generateAllForms(){
@@ -196,7 +199,7 @@ void templateEngine::generateImgPreviewPage(){
 
 void templateEngine::generateReadDbPage(){
     generateTopHTML();
-    
+    readDb();
     generateBottomHTML();
 }
 void templateEngine::generateWriteDbPage(){
