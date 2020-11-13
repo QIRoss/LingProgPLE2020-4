@@ -6,9 +6,6 @@ LFLAGS = -Wall -std=c++11
 
 MAINOBJS = templateEngine.o main.o
 IMGPREVIEWOBJS = templateEngine.o imgPreview.o
-READDBOBJS = templateEngine.o readDb.o
-WRITEDBOBJS = templateEngine.o writeDb.o
-TESTOBJS = api.o
 
 ALL = main\
 	imgPreview\
