@@ -7,15 +7,21 @@ class templateEngine {
     private:
         void generateTopHTML();
         void generateBottomHTML();
+
         void generatePreviewImgForm();
+
         void generateReadDbForm();
         void generateWriteDbForm();
+
         void generateAllForms();
+        
         void generateInnerImgPreviewPage();
 
     public:
         void generateMainPage();
         void generateImgPreviewPage();
+        void generateReadDbPage();
+        void generateWriteDbPage();
 };
 
 #endif
