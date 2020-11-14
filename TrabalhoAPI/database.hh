@@ -13,4 +13,5 @@ class Database {
         bool writeData(string, string);
         result query(string);
     private:
+        bool invalidCharacters(string);
 };

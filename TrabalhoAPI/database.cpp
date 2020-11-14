@@ -23,7 +23,28 @@ Database::Database(){
    }
 }
 
+// ANTI SQL INJECTION FUNCTION
+bool Database::invalidCharacters(string input){
+   unsigned index;
+   for(index=0;index<input.length();index++){
+      if((input[index] == '\'')||(input[index]==';'))
+         return true;
+      if((input[index]=='-')&&(input[index+1]=='-'))
+         return true;
+   }
+   return false;
+}
+
+// WRITE DATA ON POSTGRESQL
 bool Database::writeData(string title, string url){
+   if(invalidCharacters(title)){
+      cout << "<h1>ARGUMENTO INVALIDO:ANTISQL INJECTION MODE</h1>" << endl;
+      exit(1);
+   }
+   if(invalidCharacters(url)){
+      cout << "<h1>ARGUMENTO INVALIDO:ANTISQL INJECTION MODE</h1>" << endl;
+      exit(1);
+   }
    connection C("dbname = lingprog user = postgres password = abcd \
       hostaddr = 127.0.0.1 port = 5432");
    work transaction{C};
@@ -38,7 +59,12 @@ bool Database::writeData(string title, string url){
    return false;
 }
 
+//QUERY TO POSTGRESQL
 result Database::query(string title){
+   if(invalidCharacters(title)){
+      cout << "<h1>ARGUMENTO INVALIDO:ANTISQL INJECTION MODE</h1>" << endl;
+      exit(1);
+   }
    connection c{"dbname = lingprog user = postgres password = abcd \
          hostaddr = 127.0.0.1 port = 5432"};
    work transaction{c};
